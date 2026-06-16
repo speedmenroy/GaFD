@@ -1399,7 +1399,7 @@ function applyState(state){
 }
 
 async function saveNow(){
-  if(suppressRemoteSave || !isAuthed) return;
+  if(suppressRemoteSave) return;
   try{
     const state = collectState();
     try{ localStorage.setItem('gafdState', JSON.stringify(state)); }catch(e){}
@@ -1449,6 +1449,8 @@ onAuthStateChanged(auth, (user)=>{
 
 window.addEventListener('load', ()=>{
   try{ const ls = localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e){}
+    subscribeState();
+  setTimeout(()=>saveNow(), 1500);
 });
 </script>
 
