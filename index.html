@@ -1436,12 +1436,16 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
     ;
   })();
 
-  // Poll every 30s for real-time sync
-  setInterval(()=>{
+  // DISABLED: // Poll every 30s for real-time sync
+/*  setInterval(()=>{
     if(!suppressRemoteSave){
       fetch(DB_URL).then(r=>r.json()).then(state=>{ if(state) applyState(state); }).catch(()=>{});
     }
-  }, 30000);
+  }, 30000);*/
 
 })();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){var ta=document.getElementById('autosaveReminder'),st=document.getElementById('autosaveStatus'),tm=document.getElementById('autosaveTime');if(!ta)return;try{var s=localStorage.getItem('gafd_reminder');if(s){ta.value=s;if(st)st.textContent='Saved';if(tm)tm.textContent=localStorage.getItem('gafd_reminder_time')||'';}}catch(e){}var t;ta.addEventListener('input',function(){if(st)st.textContent='Saving...';clearTimeout(t);t=setTimeout(function(){try{var now=new Date().toLocaleTimeString('en-HK',{hour:'2-digit',minute:'2-digit'});localStorage.setItem('gafd_reminder',ta.value);localStorage.setItem('gafd_reminder_time',now);if(st)st.textContent='Saved';if(tm)tm.textContent=now;}catch(e){if(st)st.textContent='Error';}},600);});});
 </script>
