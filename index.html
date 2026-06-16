@@ -1336,7 +1336,8 @@ syncFab('dashboard');
 </script>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getDatabase, ref, onValue, set, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNDrUb7Shir0bCGohgx4JNuB2q49B5jAk",
@@ -1350,16 +1351,11 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-const STATE_PATH = 'geriatricFrontDoorTool/state';
+const auth = getAuth(app);
+const STATE_PATH = 'gafd/state';
 let suppressRemoteSave = false;
 let saveTimer = null;
-
-window.firebaseRealtime = {
-  db,
-  saveNow,
-  scheduleSave,
-  subscribeState
-};
+let isAuthed = false;
 
 function collectState(){
   return {
@@ -1367,7 +1363,12 @@ function collectState(){
     reminderMemory: window.reminderMemory || '',
     diseaseData: window.diseaseData || {},
     drugCategories: window.DRUG_CATEGORIES || {},
-    activeDrugCategory: window.activeDrugCategory || 'cardiovascular',     qrItems: [...(document.getElementById('qrGallery')?document.getElementById('qrGallery').querySelectorAll('.qr-item'):[]  )].map(c=>({img:(c.querySelector('img')||{src:''}).src,title:(c.querySelector('input')||{value:''}).value,desc:(c.querySelector('textarea')||{value:''}).value}))
+    activeDrugCategory: window.activeDrugCategory || 'cardiovascular',
+    qrItems: [...(document.getElementById('qrGallery')?document.getElementById('qrGallery').querySelectorAll('.qr-item'):[] )].map(c=>({
+      img:(c.querySelector('img')||{src:''}).src,
+      title:(c.querySelector('input')||{value:''}).value,
+      desc:(c.querySelector('textarea')||{value:''}).value
+    }))
   };
 }
 
@@ -1375,7 +1376,7 @@ function applyState(state){
   if(!state) return;
   suppressRemoteSave = true;
   if(state.calendarEntries) window.calendarEntries = state.calendarEntries;
-  if(typeof state.reminderMemory === 'string') {
+  if(typeof state.reminderMemory === 'string'){
     window.reminderMemory = state.reminderMemory;
     const el = document.getElementById('autosaveReminder');
     if(el) el.value = state.reminderMemory;
@@ -1386,22 +1387,31 @@ function applyState(state){
   if(typeof window.renderCalendar === 'function') window.renderCalendar();
   if(typeof window.renderDiseaseTable === 'function') window.renderDiseaseTable();
   if(typeof window.renderDrugButtons === 'function') window.renderDrugButtons();
-  if(typeof window.renderDrugTable === 'function') window.renderDrugTable();   if(state.qrItems && Array.isArray(state.qrItems)){const g=document.getElementById('qrGallery');if(g){g.innerHTML='';state.qrItems.forEach(q=>createQrCard(q.img,q.title,q.desc));}}
+  if(typeof window.renderDrugTable === 'function') window.renderDrugTable();
+  if(state.qrItems && Array.isArray(state.qrItems)){
+    const g = document.getElementById('qrGallery');
+    if(g){
+      g.innerHTML = '';
+      state.qrItems.forEach(q => createQrCard(q.img, q.title, q.desc));
+    }
+  }
   setTimeout(()=>{ suppressRemoteSave = false; }, 200);
 }
 
 async function saveNow(){
-  if(suppressRemoteSave) return;
-  try {
-    try{localStorage.setItem('gemState',JSON.stringify(collectState()));}catch(e){}     await set(ref(db, STATE_PATH), collectState());
+  if(suppressRemoteSave || !isAuthed) return;
+  try{
+    const state = collectState();
+    try{ localStorage.setItem('gafdState', JSON.stringify(state)); }catch(e){}
+    await set(ref(db, STATE_PATH), state);
     const status = document.getElementById('autosaveStatus');
     const time = document.getElementById('autosaveTime');
     if(status) status.textContent = 'Saved to cloud';
     if(time) time.textContent = new Date().toLocaleTimeString('en-HK',{hour:'2-digit',minute:'2-digit'});
-  } catch (err) {
+  } catch(err){
     console.error('Firebase save failed', err);
     const status = document.getElementById('autosaveStatus');
-    if(status) status.textContent = 'Cloud save failed';
+    if(status) status.textContent = 'Saved locally';
   }
 }
 
@@ -1409,8 +1419,8 @@ function scheduleSave(){
   if(suppressRemoteSave) return;
   clearTimeout(saveTimer);
   const status = document.getElementById('autosaveStatus');
-  if(status) status.textContent = 'Saving to cloud...';
-  saveTimer = setTimeout(saveNow, 500);
+  if(status) status.textContent = 'Saving...';
+  saveTimer = setTimeout(saveNow, 800);
 }
 
 function subscribeState(){
@@ -1420,10 +1430,25 @@ function subscribeState(){
   });
 }
 
+window.firebaseRealtime = { db, saveNow, scheduleSave, subscribeState };
+
+signInAnonymously(auth).then(()=>{
+  isAuthed = true;
+}).catch(err=>{
+  console.warn('Anonymous auth failed, using localStorage only', err);
+  isAuthed = false;
+});
+
+onAuthStateChanged(auth, (user)=>{
+  if(user){
+    isAuthed = true;
+    subscribeState();
+    setTimeout(()=>saveNow(), 1200);
+  }
+});
+
 window.addEventListener('load', ()=>{
-      try{const ls=localStorage.getItem('gemState');if(ls)applyState(JSON.parse(ls));}catch(e){}
-  subscribeState();
-  setTimeout(()=>saveNow(), 1200);
+  try{ const ls = localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e){}
 });
 </script>
 
