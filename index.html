@@ -1430,11 +1430,11 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
 
   window.firebaseRealtime = { saveNow, scheduleSave };
 
-  window.addEventListener('load', ()=>{
+  (function initState(){
     try{ const ls = localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e){}
     if(!localStorage.getItem('gafdState')) loadFromCloud();
     ;
-  });
+  })();
 
   // Poll every 30s for real-time sync
   setInterval(()=>{
