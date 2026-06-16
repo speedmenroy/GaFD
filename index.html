@@ -1387,7 +1387,7 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
   }
 
   async function saveNow(){
-    if(suppressRemoteSave) return;
+    // suppressRemoteSave guard removed for initial save
     const state = collectState();
     try{ localStorage.setItem('gafdState', JSON.stringify(state)); }catch(e){}
     const status = document.getElementById('autosaveStatus');
@@ -1411,7 +1411,7 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
   }
 
   function scheduleSave(){
-    if(suppressRemoteSave) return;
+    // suppressRemoteSave guard removed for initial save
     clearTimeout(saveTimer);
     const status = document.getElementById('autosaveStatus');
     if(status) status.textContent = 'Saving...';
