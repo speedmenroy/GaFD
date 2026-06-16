@@ -1393,10 +1393,10 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
     const status = document.getElementById('autosaveStatus');
     const time = document.getElementById('autosaveTime');
     try{
-      const res = await fetch(DB_URL, {
+      const lean={calendarEntries:state.calendarEntries,reminderMemory:state.reminderMemory,diseaseData:state.diseaseData,drugCategories:state.drugCategories,activeDrugCategory:state.activeDrugCategory}; const res = await fetch(DB_URL, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(state)
+        body: JSON.stringify(lean)
       });
       if(res.ok){
         if(status) status.textContent = 'Saved to cloud';
