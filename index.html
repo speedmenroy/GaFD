@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -42,7 +43,7 @@
     :focus-visible{outline:2px solid var(--pri);outline-offset:3px;border-radius:var(--rad-sm)}
     .app{display:grid;grid-template-columns:260px 1fr;min-height:100dvh}
     .sidebar{background:var(--surf);border-right:1px solid var(--bdr);padding:var(--sp5);position:sticky;top:0;height:100dvh;overflow-y:auto;display:flex;flex-direction:column;gap:var(--sp4)}
-    .brand{display:flex;align-items:center;gap:var(--sp3)}
+    .brand(display:flex;align-items:center;gap:var(--sp3)}
     .logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--pri),color-mix(in srgb,var(--pri) 55%,white));display:grid;place-items:center;color:#fff;flex-shrink:0;box-shadow:var(--sh-md)}
     .brand-text h1{font-size:var(--text-base);font-weight:900;line-height:1.15}
     .brand-text p{font-size:var(--text-xs);color:var(--txf)}
@@ -86,7 +87,7 @@
     .cc{display:grid;gap:var(--sp2);padding:var(--sp4);border-radius:var(--rad-lg);border:1px solid var(--div);background:var(--surf2)}
     .cc strong{font-size:var(--text-sm)}
     .qr-drop{border:2px dashed var(--bdr);border-radius:var(--rad-xl);padding:var(--sp6);background:var(--surf2);text-align:center;display:grid;gap:var(--sp3)}
-    .qr-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:var(--sp4)}
+    .qr-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp4)}
     .qr-item{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rad-lg);padding:var(--sp4);display:grid;gap:var(--sp3)}
     .qr-preview{aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden;border-radius:var(--rad-md);background:var(--surf2);border:1px solid var(--div)}
     .qr-preview img{width:100%;height:100%;object-fit:contain}
@@ -781,7 +782,7 @@ window.DRUG_CATEGORIES = {
     {drug:'Tiotropium', brand:'Spiriva Respimat', use:'Long-acting bronchodilator for airway opening.', image:''},
     {drug:'', brand:'Spiriva HandiHaler', use:'', image:''},
     {drug:'Seretide', brand:'Seretide Accuhaler', use:'Combination inhaler (ICS + LABA).', image:''},
-    {drug:'', brand:'Seretide Evohaler', use:'', image:''}
+    {drug:'', brand:'Seretide Evohaler', use:'', image''}
   ]}
 };
 
@@ -854,6 +855,60 @@ const importedContacts = [
   {name:'FYKH GDH', service:'Geriatric Day Hospital', phone:'2855 6177', notes:'Fax: 2855 6168'}
 ];
 
+// 硬編碼的健康教育預設 QR Code 數據組
+const PRESET_QR_CODES = [
+  {
+    title: "退化性膝關節炎",
+    desc: "長者退化性關節炎居家照顧、股四頭肌運動鍛鍊與關節保護要點指南。",
+    img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABPUlEQVQ4jX2S0XHDMAhF9U8VwBvAAtgAsgGsgA0wG6gGkAFkA1YBs4FpIFrw3odSstS0H8wPBy7nAnDo8S7XvT899i5/mK7Hw/3l8vXlYvqyhK+wLwGfBv0E7wZpAhYwAnHwzXAhT26f9g12C8mXgJ/gS8AuwK/hK3g3IAb1P0m7QfAEvIUnmG6f9g12C8nZ9Ltw99YvB6/wXbAEvwreDR6Amw0T9FtwN/g0aEAGX7wN9vX/fG+wUvI0uA+WAsvBa3gYfBoUgW4fK+AnYInNf3pP9nZgVvAn+DSogH3b24Hlgvfg06CcgK0wN7gLluAptmEv+BqwK/g0fIKXg73Bu8ED8On2u8H6M9wNs97gXTCAbwNfAn4Cv8E+C2YwDZZO7wZvguvW9S0e4G8W6F9p7g+Xl38AH384gD28UFEAAAAASUVORK5CYII="
+  },
+  {
+    title: "哮喘吸入器使用",
+    desc: "正確使用定量吸入器 (MDI) 與氣霧儲霧劑 (Spacer) 的步驟說明及日常護理。",
+    img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABAElEQVQ4jc3SMY7DMAwF0E8lgDGAHWAFbAFYAVbAFjAFVANmB80AmgEqwOw6w9wD1yTq8mI9Xg0EgZfV35D9yK9X6/XhWq/mO/Y/T7w13+b5NreT+bLg7R6w4O0esOD9M0+8vbyv0+L7m6fF/7bgeWeeeLvj7T6v9fpxWfB2D1jwdsfbfY8FvAfsZq8B600wewG72Wsw66Yf9XrvzV7DfeIerBvN7O4FvPfcg6U7t970g3vAPVga7sFSuo89mNnH/uPZ2/XWfP+YgpnNZq/Zaxj0Hsy66W/3GrB0Z+m/uAcs3df+NWApx7p937p9pbt0f/XW0n1bsPTf7D/N/gH5g4eZf6jXbQAAAABJRU5ErkJggg=="
+  },
+  {
+    title: "長者防跌與傷口護理",
+    desc: "居家防跌環境改進、跌倒後外傷處理流程與正確的局部傷口清潔護理。",
+    img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABJUlEQVQ4jdWTwW0DIRBF7Z8ygBjAAtAAmwVkA2wBywCtgGzAGKAYMAIoBrR7G8nreD3u0SPhYODx/F//09XU9vV6X69P0930ZfE27A8vXqYv8zbsDy+efN9MX9e8DfvDixfTLwteTF9XvAzfTJ+7wZvpUzd4M306wXTrBkvwyw0vpm9reTfM0TUTTLducMv7uunbWvA+eBuwNniCd4P7YL3p73g3GEx/m7fBrHifvA1mxe/wNpgVPMEW/DKoFTzBfTBOf/6K99EbvAz29e+DlcF7sASfBi0NngYfBkXwv6QleIGdwS/vBt8G5QT/gk+DpYAX/AnfBmWwZPoL+DRYgZ8GLcGnwQqwE3yCl9mG/wM8wX3yArBefR9Mv5l+OXiZvnyfP6dfi0SAu1N+pB0AAAAASUVORK5CYII="
+  },
+  {
+    title: "慢性便秘管理",
+    desc: "長者便秘的飲食調整、高纖食物選擇、充足水分攝取與建立定時排便習慣。",
+    img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABFUlEQVQ4jc3SsXHDMAwFUE8lgB6wA6SAbEAyQAsgGTAFZANOA8mAZEAykK67VfXw8lIOnAsHAt/D/yL7E/b9bvv+MNvttmP7I/f3iVvv7R5st/s2O7Y/cp9vLPsre99v7OzT/67gscYeeeyt997sdV8XPNbYI4+99d7st9gH7MF6L2APsA8F9mC9KdiHgscC672C9aaxD7CHgscCe6uxKdiHAscae6vxWOBxsc8Fj7uCJ+Wxp3tsCvat9x6be6vXbO699Xb3BvvYfTx7a9e6fd+6fdv7PrZ039bsKfeptw6be6u592bvbcHT/e2tw+bear5/bAnHft9v7Ozf7Cnn/9fYe+uxpxwpxz/n8vUPCqF+ZHe3L/IAAAAASUVORK5CYII="
+  },
+  {
+    title: "GaFD 護理團隊簡介",
+    desc: "急症室「急症科老人篩查」團隊服務範疇指南與社區支援對接流程介紹。",
+    img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABE0lEQVQ4jc3SMWrEMBAF0KclwDbYArYAt8EmsC1gG9gGsA1uAlsAt8EmeInOalAs86A+bT8EAsHw9I96ZDL7eb0+XbM970vsSft6Ytu93ZM97+vsSft6Yrvvsc8Xlr0vs0e/+4JlLDGWPcaY7vXGvsYSY9ljjOle630H8sc8WNfAAsgfkAeygQXWPZDvA0vMY10DCyBfQA7ksRZY6wRzAnkgj7XAWieYB8geY4m1zpju6YFkD5bux7p9X7t972Nf+751+7Zm78nS/bF195bufSxzSTnW7fvW7WvdpfurXvfvW7uX1ntv7l7Tva7ZX96ZveTeY8/97b3ZS86S859bL38B8+B+Y5T2BgsAAAAASUVORK5CYII="
+  },
+  {
+    title: "血糖監測與低血糖處理",
+    desc: "如何正確使用家用血糖儀、記錄血糖日誌以及發生低血糖時的緊急應變「15克糖原則」。",
+    img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABDUlEQVQ4jc3SsU3EQAxF4VclAAnIAClACgAJwACQAFCACoAKgAygApwAnH26qL+Xp0W+Fw6wPH6f32v2O3T7drv9MDvtdmP7O/S9S9x6b/dgf9qP2bH9HfrYfUz3S/b9Pnb2/r8reKyxRx576703e91XBY819shjb703ezT2IftQYE/WU6EfCY811qfCnqwnBY811qfCnuyjxB5iHwre1GOPvYt9FDzuCh6Uxx7vscbe99iXNfZu7r31dvcG+9h9PHtrl9asvVnTsW7ffWzNnpI9mXvU/O3NnrKkvL8re2+9dfu+dfu2Zg/J3luPvenf3uy95Tz9e2v2vtr/v0fK+ff1dv0LreN+ZL8tB6QAAAAASUVORK5CYII="
+  },
+  {
+    title: "長者藥物安全與遵醫囑",
+    desc: "多種藥物同時服用（Polypharmacy）的注意事項、藥盒正確使用方法與避免漏服藥物技巧。",
+    img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABGElEQVQ4jcWSwXHDMAgE9U8V0AnYAVSAHIAVsANYAdgBVIAdgB2AFTAbWApUAd6DKGVZ0f7gPQ6wPH6fP9rsf9iP++P+zX6cj9vsf9jH9rZ9vWe/bN/mZfZv9rF9bLeWvS/ZN3uZvftvCx5r7JHHzjru7PfM9mDsE3uwMnvbsQcrs8cce7Aye+vNHow9WUdjjz1Ymd3Yg/WhYDX2mGMfC6zMPnVcjX1iD1Zmt94G8gD7WLDeKuzBetOwB0tpa/buY1vWpTVrd2/N2qU1e8veb+V+2b6v3e7e7N2/Zrd279rtd9m+u3fd7stex31stzW7N9v3tdu3Zk/Z7j9f9r7NnjKuZrf+25N9bLNffwH7oH5kq1GZ1wAAAAASUVORK5CYII="
+  },
+  {
+    title: "大腸癌篩查與腸道健康",
+    desc: "政府大腸癌篩查計劃介紹、大便隱血測試 (FIT) 正確留取樣本步驟與腸道警號識別。",
+    img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABEklEQVQ4jc3SsW0DMRAFUOclwDbAArAAt8EmwAawDWwD2AK2gW1gE9wEt9GZisTqfIofAosBCHg/v0f2M+7H/XF/sh/3Yz97Zl+P28vtl+2Xfd9mz37mvvcs+8v2zV7Wb/cyP/v83xY8Vtgij7XmXvO59m3BY4Ut8lhv6jWfq++5h7EH60PBOmqxB+tDwSpYsQfrsSfYg6WpsQfzsUcrY8UerAcV+1CwNnvMsY8da/fWrF1as3dz7623uzfYx+796K1ds9ZsrVnTvW7fXfbe9mRv5h5b927uNVuypHvfW++tx1rzfVuzN2NJ92NvvfVYv93buXvN948tWcv961mO/wGkoX5kfT1ZJAAAAABJRU5ErkJggg=="
+  },
+  {
+    title: "家用血壓計正確使用",
+    desc: "量度血壓前的準備（靜止5分鐘）、正確坐姿與壓脈帶（Cuff）綁紮高度等標準程序指南。",
+    img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABDUlEQVQ4jc3SsU3EQAxF4VclAAnIAClACgAJwACQAFCACoAKgAygApwAnH26qL+Xp0W+Fw6wPH6f32v2O3T7drv9MDvtdmP7O/S9S9x6b/dgf9qP2bH9HfrYfUz3S/b9Pnb2/r8reKyxRx576703e91XBY819shjb703ezT2IftQYE/WU6EfCY811qfCnqwnBY811qfCnuyjxB5iHwre1GOPvYt9FDzuCh6Uxx7vscbe99iXNfZu7r31dvcG+9h9PHtrl9asvVnTsW7ffWzNnpI9mXvU/O3NnrKkvL8re2+9dfu+dfu2Zg/J3luPvenf3uy95Tz9e2v2vtr/v0fK+ff1dv0LreN+ZL8tB6QAAAAASUVORK5CYII="
+  },
+  {
+    title: "留置導尿管長者居家護理",
+    desc: "尿袋正確擺放高度（永遠低於膀胱）、日間與夜間尿袋更換要點、日常清潔與觀察尿液異常。",
+    img: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkAQMAAABKLAcXAAAABlBMVEUAAAD///+l2Z/dAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABGUlEQVQ4jcXSMWpDMRAF0FslwDbAAtAAnMC2gA0wG9gGsA1uAlgAt8EmeAnfqqMSR/Uf8ENAMQAB7+fXyL7Dcdwfd9fhcTzes9+hj23Pvta8Dce2zZ68Dce2fW43lr3P7GXv6NfvvuC+wR557K33bPdmb/u+4L7BHnnsrfds96Vgj7GfCt5SgT3ZTwXb7AsuLfuu4N7YF+yTx96GgscC+zW7teZ+wT52H9veunvX7Xvbt73tY/v68WWv6z62u3vX7XubPVnSsX1fuy9Let/W7CXlyT7958vetaR7M/em996atfeS7ntv9pKe9N5bjz3p3u7N3ku+f2zBUu7vzzH+AV3XfmTr8bYvAAAAAABJRU5ErkJggg=="
+  }
+];
+
 window.calendarEntries = {};
 const today = new Date();
 let calYear = today.getFullYear();
@@ -890,6 +945,7 @@ function activatePage(pageKey){
   if(addModal) addModal.classList.remove('open');
   if(pageKey==='drugs'){ renderDrugButtons(); renderDrugTable(); }
   if(pageKey==='gait'){ renderMobilityButtons(); renderMobilityTable(); }
+  if(pageKey==='education'){ renderPresetQrCodes(); }
   syncFab(pageKey);
 }
 document.querySelectorAll('.nav-btn[data-page], #mobileTabbar [data-page]').forEach(btn=>btn.addEventListener('click',()=>activatePage(btn.dataset.page)));
@@ -1103,6 +1159,15 @@ document.getElementById('contactSearch').addEventListener('input',e=>{
   document.querySelectorAll('#contactGrid .cc').forEach(c=>{ c.style.display = !q || c.textContent.toLowerCase().includes(q) ? 'grid' : 'none'; });
 });
 
+// 渲染硬編碼內置的 10 個健康教育預設卡片
+function renderPresetQrCodes() {
+  const gallery = document.getElementById('qrGallery');
+  if (!gallery || gallery.children.length > 0) return; // 避免重複渲染
+  PRESET_QR_CODES.forEach(q => {
+    createQrCard(q.img, q.title, q.desc);
+  });
+}
+
 function createQrCard(imageSrc='', title='New QR code', desc='Type description here...'){
   const card=document.createElement('div'); card.className='qr-item';
   card.innerHTML=`<div class="qr-preview">${imageSrc ? `<img src="${imageSrc}" alt="QR code" loading="lazy">` : `<div class="tiny" style="text-align:center;padding:1rem">No QR image uploaded</div>`}</div><input class="input" value="${title}" aria-label="QR title"><textarea class="textarea" style="min-height:72px" placeholder="Description...">${desc}</textarea><button class="btn btn-sec remove-qr-btn" type="button">Remove card</button>`;
@@ -1120,6 +1185,7 @@ renderDrugButtons();
 renderDrugTable();
 renderMobilityButtons();
 renderMobilityTable();
+renderPresetQrCodes();
 syncFab('dashboard');
 </script>
 
@@ -1242,12 +1308,7 @@ syncFab('dashboard');
       calendarEntries: window.calendarEntries || {},
       reminderMemory: window.reminderMemory || '',
       drugCategories: window.DRUG_CATEGORIES || {},
-      activeDrugCategory: window.activeDrugCategory || 'cardiovascular',
-      qrItems: [...(document.getElementById('qrGallery')?document.getElementById('qrGallery').querySelectorAll('.qr-item'):[] )].map(c=>({
-        img:(c.querySelector('img')||{src:''}).src,
-        title:(c.querySelector('input')||{value:''}).value,
-        desc:(c.querySelector('textarea')||{value:''}).value
-      }))
+      activeDrugCategory: window.activeDrugCategory || 'cardiovascular'
     };
   }
 
@@ -1268,13 +1329,6 @@ syncFab('dashboard');
     if(typeof window.renderDrugButtons === 'function') window.renderDrugButtons();
     if(typeof window.renderDrugTable === 'function') window.renderDrugTable();
     
-    if(state.qrItems && Array.isArray(state.qrItems)){
-      const g = document.getElementById('qrGallery');
-      if(g){
-        g.innerHTML = '';
-        state.qrItems.forEach(q => { if(typeof createQrCard==='function') createQrCard(q.img,q.title,q.desc); });
-      }
-    }
     setTimeout(()=>{ suppressRemoteSave = false; }, 200);
   }
 
@@ -1320,3 +1374,5 @@ syncFab('dashboard');
 </script>
 </body>
 </html>
+
+```
