@@ -1337,7 +1337,7 @@ syncFab('dashboard');
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC98amzV78fQm99Rmr-N0tiJfHp9OIGC7s",
@@ -1351,11 +1351,11 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-const auth = getAuth(app);
+
 const STATE_PATH = 'gafd/state';
 let suppressRemoteSave = false;
 let saveTimer = null;
-let isAuthed = false;
+
 
 function collectState(){
   return {
@@ -1432,20 +1432,6 @@ function subscribeState(){
 
 window.firebaseRealtime = { db, saveNow, scheduleSave, subscribeState };
 
-signInAnonymously(auth).then(()=>{
-  isAuthed = true;
-}).catch(err=>{
-  console.warn('Anonymous auth failed, using localStorage only', err);
-  isAuthed = false;
-});
-
-onAuthStateChanged(auth, (user)=>{
-  if(user){
-    isAuthed = true;
-    subscribeState();
-    setTimeout(()=>saveNow(), 1200);
-  }
-});
 
 window.addEventListener('load', ()=>{
   try{ const ls = localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e){}
