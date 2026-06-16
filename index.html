@@ -1423,16 +1423,16 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
       const res = await fetch(DB_URL);
       if(res.ok){
         const state = await res.json();
-        if(state) applyState(state);
+        if(state){ applyState(state); } else { try{ const ls=localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e2){} }
       }
-    } catch(e){ console.warn('Cloud load failed', e); }
+    } catch(e){ console.warn('Cloud load failed', e); try{ const ls=localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e2){} }
   }
 
   window.firebaseRealtime = { saveNow, scheduleSave };
 
   (function initState(){
     try{ const ls = localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e){}
-    if(!localStorage.getItem('gafdState')) loadFromCloud();
+    loadFromCloud();
     ;
   })();
 
@@ -1447,5 +1447,5 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded',function(){var ta=document.getElementById('autosaveReminder'),st=document.getElementById('autosaveStatus'),tm=document.getElementById('autosaveTime');if(!ta)return;try{var s=localStorage.getItem('gafd_reminder');if(s){ta.value=s;if(st)st.textContent='Saved';if(tm)tm.textContent=localStorage.getItem('gafd_reminder_time')||'';}}catch(e){}var t;ta.addEventListener('input',function(){if(st)st.textContent='Saving...';clearTimeout(t);t=setTimeout(function(){try{var now=new Date().toLocaleTimeString('en-HK',{hour:'2-digit',minute:'2-digit'});localStorage.setItem('gafd_reminder',ta.value);localStorage.setItem('gafd_reminder_time',now);if(st)st.textContent='Saved';if(tm)tm.textContent=now;}catch(e){ifetch('https://gemnurse2026-default-rtdb.asia-southeast1.firebasedatabase.app/gafd/reminder.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:ta.value,time:now})}).then(function(r){if(st)st.textContent=r.ok?'Saved to cloud':'Saved locally';}).catch(function(){if(st)st.textContent='Saved locally';});},600);});});
+document.addEventListener('DOMContentLoaded',function(){var ta=document.getElementById('autosaveReminder'),st=document.getElementById('autosaveStatus'),tm=document.getElementById('autosaveTime');if(!ta)return;try{var s=localStorage.getItem('gafd_reminder');if(s){ta.value=s;if(st)st.textContent='Saved';if(tm)tm.textContent=localStorage.getItem('gafd_reminder_time')||'';}}catch(e){}var t;ta.addEventListener('input',function(){if(st)st.textContent='Saving...';clearTimeout(t);t=setTimeout(function(){try{var now=new Date().toLocaleTimeString('en-HK',{hour:'2-digit',minute:'2-digit'});window.reminderMemory=ta.value; localStorage.setItem('gafd_reminder',ta.value);localStorage.setItem('gafd_reminder_time',now);if(st)st.textContent='Saved';if(tm)tm.textContent=now;}catch(e){ifetch('https://gemnurse2026-default-rtdb.asia-southeast1.firebasedatabase.app/gafd/reminder.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:ta.value,time:now})}).then(function(r){if(st)st.textContent=r.ok?'Saved to cloud':'Saved locally';}).catch(function(){if(st)st.textContent='Saved locally';});},600);});});
 </script>
