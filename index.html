@@ -1433,7 +1433,7 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
   window.addEventListener('load', ()=>{
     try{ const ls = localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e){}
     loadFromCloud();
-    setTimeout(saveNow, 2000);
+    setTimeout(saveNow, 3500);
   });
 
   // Poll every 30s for real-time sync
