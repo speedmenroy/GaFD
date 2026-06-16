@@ -1338,108 +1338,110 @@ syncFab('dashboard');
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+<script>
+(function(){
+  const DB_URL = 'https://gemnurse2026-default-rtdb.asia-southeast1.firebasedatabase.app/gafd/state.json';
+  const DB_STREAM = 'https://gemnurse2026-default-rtdb.asia-southeast1.firebasedatabase.app/gafd/state.json';
+  let suppressRemoteSave = false;
+  let saveTimer = null;
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC98amzV78fQm99Rmr-N0tiJfHp9OIGC7s",
-  authDomain: "gemnurse2026.firebaseapp.com",
-  databaseURL: "https://gemnurse2026-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "gemnurse2026",
-  storageBucket: "gemnurse2026.firebasestorage.app",
-  messagingSenderId: "890126611581",
-  appId: "1:890126611581:web:e20eeba797078689ac6d14"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-
-const STATE_PATH = 'gafd/state';
-let suppressRemoteSave = false;
-let saveTimer = null;
-
-
-function collectState(){
-  return {
-    calendarEntries: window.calendarEntries || {},
-    reminderMemory: window.reminderMemory || '',
-    diseaseData: window.diseaseData || {},
-    drugCategories: window.DRUG_CATEGORIES || {},
-    activeDrugCategory: window.activeDrugCategory || 'cardiovascular',
-    qrItems: [...(document.getElementById('qrGallery')?document.getElementById('qrGallery').querySelectorAll('.qr-item'):[] )].map(c=>({
-      img:(c.querySelector('img')||{src:''}).src,
-      title:(c.querySelector('input')||{value:''}).value,
-      desc:(c.querySelector('textarea')||{value:''}).value
-    }))
-  };
-}
-
-function applyState(state){
-  if(!state) return;
-  suppressRemoteSave = true;
-  if(state.calendarEntries) window.calendarEntries = state.calendarEntries;
-  if(typeof state.reminderMemory === 'string'){
-    window.reminderMemory = state.reminderMemory;
-    const el = document.getElementById('autosaveReminder');
-    if(el) el.value = state.reminderMemory;
+  function collectState(){
+    return {
+      calendarEntries: window.calendarEntries || {},
+      reminderMemory: window.reminderMemory || '',
+      diseaseData: window.diseaseData || {},
+      drugCategories: window.DRUG_CATEGORIES || {},
+      activeDrugCategory: window.activeDrugCategory || 'cardiovascular',
+      qrItems: [...(document.getElementById('qrGallery')?document.getElementById('qrGallery').querySelectorAll('.qr-item'):[] )].map(c=>({
+        img:(c.querySelector('img')||{src:''}).src,
+        title:(c.querySelector('input')||{value:''}).value,
+        desc:(c.querySelector('textarea')||{value:''}).value
+      }))
+    };
   }
-  if(state.diseaseData) window.diseaseData = state.diseaseData;
-  if(state.drugCategories) window.DRUG_CATEGORIES = state.drugCategories;
-  if(state.activeDrugCategory) window.activeDrugCategory = state.activeDrugCategory;
-  if(typeof window.renderCalendar === 'function') window.renderCalendar();
-  if(typeof window.renderDiseaseTable === 'function') window.renderDiseaseTable();
-  if(typeof window.renderDrugButtons === 'function') window.renderDrugButtons();
-  if(typeof window.renderDrugTable === 'function') window.renderDrugTable();
-  if(state.qrItems && Array.isArray(state.qrItems)){
-    const g = document.getElementById('qrGallery');
-    if(g){
-      g.innerHTML = '';
-      state.qrItems.forEach(q => createQrCard(q.img, q.title, q.desc));
+
+  function applyState(state){
+    if(!state) return;
+    suppressRemoteSave = true;
+    if(state.calendarEntries) window.calendarEntries = state.calendarEntries;
+    if(typeof state.reminderMemory === 'string'){
+      window.reminderMemory = state.reminderMemory;
+      const el = document.getElementById('autosaveReminder');
+      if(el) el.value = state.reminderMemory;
     }
+    if(state.diseaseData) window.diseaseData = state.diseaseData;
+    if(state.drugCategories) window.DRUG_CATEGORIES = state.drugCategories;
+    if(state.activeDrugCategory) window.activeDrugCategory = state.activeDrugCategory;
+    if(typeof window.renderCalendar === 'function') window.renderCalendar();
+    if(typeof window.renderDiseaseTable === 'function') window.renderDiseaseTable();
+    if(typeof window.renderDrugButtons === 'function') window.renderDrugButtons();
+    if(typeof window.renderDrugTable === 'function') window.renderDrugTable();
+    if(state.qrItems && Array.isArray(state.qrItems)){
+      const g = document.getElementById('qrGallery');
+      if(g){
+        g.innerHTML = '';
+        state.qrItems.forEach(q => { if(typeof createQrCard==='function') createQrCard(q.img,q.title,q.desc); });
+      }
+    }
+    setTimeout(()=>{ suppressRemoteSave = false; }, 300);
   }
-  setTimeout(()=>{ suppressRemoteSave = false; }, 200);
-}
 
-async function saveNow(){
-  if(suppressRemoteSave) return;
-  try{
+  async function saveNow(){
+    if(suppressRemoteSave) return;
     const state = collectState();
     try{ localStorage.setItem('gafdState', JSON.stringify(state)); }catch(e){}
-    await set(ref(db, STATE_PATH), state);
     const status = document.getElementById('autosaveStatus');
     const time = document.getElementById('autosaveTime');
-    if(status) status.textContent = 'Saved to cloud';
-    if(time) time.textContent = new Date().toLocaleTimeString('en-HK',{hour:'2-digit',minute:'2-digit'});
-  } catch(err){
-    console.error('Firebase save failed', err);
-    const status = document.getElementById('autosaveStatus');
-    if(status) status.textContent = 'Saved locally';
+    try{
+      const res = await fetch(DB_URL, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(state)
+      });
+      if(res.ok){
+        if(status) status.textContent = 'Saved to cloud';
+        if(time) time.textContent = new Date().toLocaleTimeString('en-HK',{hour:'2-digit',minute:'2-digit'});
+      } else {
+        throw new Error('HTTP '+res.status);
+      }
+    } catch(err){
+      console.error('Firebase REST save failed', err);
+      if(status) status.textContent = 'Saved locally';
+    }
   }
-}
 
-function scheduleSave(){
-  if(suppressRemoteSave) return;
-  clearTimeout(saveTimer);
-  const status = document.getElementById('autosaveStatus');
-  if(status) status.textContent = 'Saving...';
-  saveTimer = setTimeout(saveNow, 800);
-}
+  function scheduleSave(){
+    if(suppressRemoteSave) return;
+    clearTimeout(saveTimer);
+    const status = document.getElementById('autosaveStatus');
+    if(status) status.textContent = 'Saving...';
+    saveTimer = setTimeout(saveNow, 800);
+  }
 
-function subscribeState(){
-  onValue(ref(db, STATE_PATH), (snapshot)=>{
-    const state = snapshot.val();
-    if(state) applyState(state);
+  async function loadFromCloud(){
+    try{
+      const res = await fetch(DB_URL);
+      if(res.ok){
+        const state = await res.json();
+        if(state) applyState(state);
+      }
+    } catch(e){ console.warn('Cloud load failed', e); }
+  }
+
+  window.firebaseRealtime = { saveNow, scheduleSave };
+
+  window.addEventListener('load', ()=>{
+    try{ const ls = localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e){}
+    loadFromCloud();
+    setTimeout(saveNow, 2000);
   });
-}
 
-window.firebaseRealtime = { db, saveNow, scheduleSave, subscribeState };
+  // Poll every 30s for real-time sync
+  setInterval(()=>{
+    if(!suppressRemoteSave){
+      fetch(DB_URL).then(r=>r.json()).then(state=>{ if(state) applyState(state); }).catch(()=>{});
+    }
+  }, 30000);
 
-
-window.addEventListener('load', ()=>{
-  try{ const ls = localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e){}
-    subscribeState();
-  setTimeout(()=>saveNow(), 1500);
-});
+})();
 </script>
-
-</body>
-</html>
-
