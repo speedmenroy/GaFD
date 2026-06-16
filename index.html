@@ -102,9 +102,9 @@
     .protocol-card{scroll-margin-top:96px}
     .drug-chart-table input,.drug-chart-table textarea{width:100%;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rad-sm);padding:.55rem .65rem;font-size:var(--text-sm)}
     .drug-chart-table textarea{min-height:112px;resize:vertical}
-        .drug-plus-icon{width:32px;height:32px;border-radius:999px;display:grid;place-items:center;background:var(--prihl);color:var(--pri);margin:auto}
+    .drug-plus-icon{width:32px;height:32px;border-radius:999px;display:grid;place-items:center;background:var(--prihl);color:var(--pri);margin:auto}
     .drug-plus-icon svg{width:18px;height:18px}
-.drug-thumb{width:112px;height:112px;border-radius:var(--rad-md);border:1px dashed var(--bdr);background:var(--surf);display:grid;place-items:center;overflow:hidden;cursor:pointer;position:relative;padding:8px;text-align:center}
+    .drug-thumb{width:112px;height:112px;border-radius:var(--rad-md);border:1px dashed var(--bdr);background:var(--surf);display:grid;place-items:center;overflow:hidden;cursor:pointer;position:relative;padding:8px;text-align:center}
     .drug-thumb:hover{border-color:var(--pri);background:var(--prihl)}
     .drug-thumb:focus-visible{outline:2px solid var(--pri);outline-offset:2px}
     .drug-thumb.has-image{border-style:solid}
@@ -149,9 +149,9 @@
     .menu-btn{display:none}
     .hide{display:none!important}
     .mobile-tabbar{display:none}
-        .page-end-icon{display:flex;align-items:center;justify-content:center;gap:var(--sp2);margin:var(--sp5) auto var(--sp2);color:var(--mut);font-size:var(--text-xs)}
+    .page-end-icon{display:flex;align-items:center;justify-content:center;gap:var(--sp2);margin:var(--sp5) auto var(--sp2);color:var(--mut);font-size:var(--text-xs)}
     .page-end-icon svg{width:18px;height:18px;opacity:.8}
-@media(max-width:1180px){
+    @media(max-width:1180px){
       .app{grid-template-columns:220px 1fr}
       .sidebar{padding:var(--sp4)}
       .content{padding:var(--sp4)}
@@ -325,7 +325,7 @@
         </div>
       </div>
 
-            <div class="page" id="drugs">
+      <div class="page" id="drugs">
         <div class="card drug-chart-card">
           <div class="drug-type-bar" id="drugTypeBar"></div>
           <div class="section-head" style="margin-top:var(--sp4)">
@@ -541,7 +541,6 @@
       </div>
 
       <div class="page" id="notes">
-
         <div class="card">
           <div class="card-title">① 長者地區中心 District Elderly Community Centre</div>
           <div class="tw"><table>
@@ -566,9 +565,9 @@
             <tbody>
               <tr><td>林應和長者鄰舍中心</td><td>香港仔坊會</td><td>香港鴨脷洲悅海街 1 號悅海華庭地下</td><td>2870 3970</td></tr>
               <tr><td>方王換娣長者鄰舍中心</td><td>香港仔坊會</td><td>香港仔華貴邨華貴社區中心地下</td><td>2550 5887</td></tr>
-              <tr><td>萬隸甫夫人長者鄰舍中心</td><td>中華基督教禮賢會</td><td>香港仔石排灣邨碧輝樓地下及平台</td><td>2553 8318</td></tr>
+              <tr><td>万隸甫夫人長者鄰舍中心</td><td>中華基督教禮賢會</td><td>香港仔石排灣邨碧輝樓地下及平台</td><td>2553 8318</td></tr>
               <tr><td>西園長者中心</td><td>義務工作發展局</td><td>西營盤第一街 82 號西園地下</td><td>2546 4212</td></tr>
-              <tr><td>松鶴老人中心</td><td>香港西區婦女福利會</td><td>上環必列者士街 60 號二樓</td><td>2546 5471</td></tr>
+              <tr><td>松鶴老人中心</td><td>香港西區婦源福利會</td><td>上環必列者士街 60 號二樓</td><td>2546 5471</td></tr>
               <tr><td>聖馬太長者鄰舍中心</td><td>香港聖公會福利協會</td><td>上環德輔道西 38 號 2 字樓 B 室</td><td>2548 2555</td></tr>
               <tr><td>聖路加福群會長者鄰舍中心</td><td>香港聖公會福利協會</td><td>堅尼地城龍華街 20 號觀龍樓二座地下 B 室</td><td>2817 2981</td></tr>
               <tr><td>雅研社鄰里康齡中心</td><td>鄰舍輔導會</td><td>堅尼地城海旁 26 號龍翔花園 1 樓</td><td>2819 8727</td></tr>
@@ -661,7 +660,6 @@
             <div class="card" style="background:var(--surf2)"><div class="li">賽馬會樂齡 a+<br><strong>3153 5252</strong></div></div>
           </div>
         </div>
-
       </div>
     </section>
   </main>
@@ -1028,19 +1026,6 @@ function renderReminders(){
   });
 }
 
-const autosaveReminder = document.getElementById('autosaveReminder');
-const autosaveStatus = document.getElementById('autosaveStatus');
-const autosaveTime = document.getElementById('autosaveTime');
-autosaveReminder.addEventListener('input',()=>{
-  autosaveStatus.textContent='Saving...';
-  window.reminderMemory = autosaveReminder.value;
-  const now = new Date();
-  autosaveStatus.textContent='Saved'; if(window.firebaseRealtime) window.firebaseRealtime.scheduleSave();
-  autosaveTime.textContent = now.toLocaleTimeString('en-HK',{hour:'2-digit',minute:'2-digit'});
-});
-
-autosaveReminder.value = reminderMemory;
-
 const diseaseSel = document.getElementById('diseaseMonth');
 MONTHS_LIST.forEach((m,i)=>{ const opt=document.createElement('option'); opt.value=i; opt.textContent=m.label; if(m.year===today.getFullYear()&&m.month===today.getMonth()) opt.selected=true; diseaseSel.appendChild(opt); });
 function getDaysInMonth(y,m){ return new Date(y,m+1,0).getDate(); }
@@ -1206,18 +1191,6 @@ document.getElementById('qrUploader').addEventListener('change',e=>{
   e.target.value='';
 });
 
-const saveNoteBtn = document.getElementById('saveNote');
-const clearNoteBtn = document.getElementById('clearNote');
-saveNoteBtn.addEventListener('click',()=>{
-  const titleEl=document.getElementById('noteTitle'); const bodyEl=document.getElementById('noteBody'); const saved=document.getElementById('savedNotes');
-  const t=titleEl.value.trim(); const b=bodyEl.value.trim(); if(!t && !b) return;
-  if(saved.querySelector('.li.tiny')) saved.innerHTML='';
-  const item=document.createElement('div'); item.className='li';
-  item.innerHTML=`<strong>${t || 'Untitled'}</strong> <span class="tiny">${new Date().toLocaleTimeString('en-HK',{hour:'2-digit',minute:'2-digit'})}</span><div class="tiny" style="margin-top:6px;white-space:pre-wrap">${b}</div>`;
-  saved.prepend(item); titleEl.value=''; bodyEl.value='';
-});
-clearNoteBtn.addEventListener('click',()=>{ document.getElementById('noteTitle').value=''; document.getElementById('noteBody').value=''; });
-
 renderCalendar();
 renderDiseaseTable();
 renderDrugButtons();
@@ -1334,15 +1307,14 @@ syncFab('dashboard');
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 })();
 </script>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
- from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
 <script>
+// 核心數據庫與雲端同步模組（徹底修復 Race Condition 版）
 (function(){
   const DB_URL = 'https://gemnurse2026-default-rtdb.asia-southeast1.firebasedatabase.app/gafd/state.json';
-  const DB_STREAM = 'https://gemnurse2026-default-rtdb.asia-southeast1.firebasedatabase.app/gafd/state.json';
-  let suppressRemoteSave = false;
+  
+  // 關鍵保護變數：初始化下載未完成前，絕對禁止儲存（防止覆蓋空數據）
+  let suppressRemoteSave = true; 
   let saveTimer = null;
 
   function collectState(){
@@ -1362,7 +1334,8 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
 
   function applyState(state){
     if(!state) return;
-    suppressRemoteSave = true;
+    suppressRemoteSave = true; // 暫時鎖定
+
     if(state.calendarEntries) window.calendarEntries = state.calendarEntries;
     if(typeof state.reminderMemory === 'string'){
       window.reminderMemory = state.reminderMemory;
@@ -1372,10 +1345,13 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
     if(state.diseaseData) window.diseaseData = state.diseaseData;
     if(state.drugCategories) window.DRUG_CATEGORIES = state.drugCategories;
     if(state.activeDrugCategory) window.activeDrugCategory = state.activeDrugCategory;
+    
+    // 刷新各面板畫面
     if(typeof window.renderCalendar === 'function') window.renderCalendar();
     if(typeof window.renderDiseaseTable === 'function') window.renderDiseaseTable();
     if(typeof window.renderDrugButtons === 'function') window.renderDrugButtons();
     if(typeof window.renderDrugTable === 'function') window.renderDrugTable();
+    
     if(state.qrItems && Array.isArray(state.qrItems)){
       const g = document.getElementById('qrGallery');
       if(g){
@@ -1383,20 +1359,23 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
         state.qrItems.forEach(q => { if(typeof createQrCard==='function') createQrCard(q.img,q.title,q.desc); });
       }
     }
-    setTimeout(()=>{ suppressRemoteSave = false; }, 300);
+    setTimeout(()=>{ suppressRemoteSave = false; }, 500); // 確保解鎖安全
   }
 
   async function saveNow(){
-    // suppressRemoteSave guard removed for initial save
+    if(suppressRemoteSave) return;
     const state = collectState();
+    
     try{ localStorage.setItem('gafdState', JSON.stringify(state)); }catch(e){}
+    
     const status = document.getElementById('autosaveStatus');
     const time = document.getElementById('autosaveTime');
+    
     try{
-      const lean={calendarEntries:state.calendarEntries,reminderMemory:state.reminderMemory,diseaseData:state.diseaseData,drugCategories:state.drugCategories,activeDrugCategory:state.activeDrugCategory}; const res = await fetch(DB_URL, {
+      const res = await fetch(DB_URL, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(lean)
+        body: JSON.stringify(state)
       });
       if(res.ok){
         if(status) status.textContent = 'Saved to cloud';
@@ -1411,41 +1390,55 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
   }
 
   function scheduleSave(){
-    // suppressRemoteSave guard removed for initial save
+    if(suppressRemoteSave) return;
     clearTimeout(saveTimer);
     const status = document.getElementById('autosaveStatus');
     if(status) status.textContent = 'Saving...';
     saveTimer = setTimeout(saveNow, 800);
   }
-// removed auto-save on load
+
   async function loadFromCloud(){
     try{
       const res = await fetch(DB_URL);
       if(res.ok){
         const state = await res.json();
-        if(state){ applyState(state); } else { try{ const ls=localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e2){} }
+        if(state){ 
+          applyState(state); 
+        } else { 
+          // 雲端無數據則加載本地暫存
+          try{ const ls=localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e2){} 
+          suppressRemoteSave = false;
+        }
       }
-    } catch(e){ console.warn('Cloud load failed', e); try{ const ls=localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e2){} }
+    } catch(e){ 
+      console.warn('Cloud load failed, fallback to local', e); 
+      try{ const ls=localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e2){} 
+      suppressRemoteSave = false;
+    }
   }
 
   window.firebaseRealtime = { saveNow, scheduleSave };
 
-  document.addEventListener('DOMContentLoaded',function initState(){
-    try{ const ls = localStorage.getItem('gafdState'); if(ls){ applyState(JSON.parse(ls)); } const rem=localStorage.getItem('gafd_reminder'); if(rem){window.reminderMemory=rem; const ta=document.getElementById('autosaveReminder'); if(ta) ta.value=rem;} }catch(e){}
+  document.addEventListener('DOMContentLoaded', function(){
+    // 1. 優先渲染本地暫存
+    try { 
+      const ls = localStorage.getItem('gafdState'); 
+      if(ls) applyState(JSON.parse(ls)); 
+    } catch(e){}
+    
+    // 2. 獲取雲端真實最新數據
     loadFromCloud();
-    ;
-  });
 
-  // DISABLED: // Poll every 30s for real-time sync
-/*  setInterval(()=>{
-    if(!suppressRemoteSave){
-      fetch(DB_URL).then(r=>r.json()).then(state=>{ if(state) applyState(state); }).catch(()=>{});
+    // 3. 綁定編輯留言板的即時自動儲存事件
+    const ta = document.getElementById('autosaveReminder');
+    if(ta) {
+      ta.addEventListener('input', function(){
+        window.reminderMemory = ta.value;
+        scheduleSave();
+      });
     }
-  }, 30000);*/
-
+  });
 })();
 </script>
-
-<script>
-document.addEventListener('DOMContentLoaded',function(){var ta=document.getElementById('autosaveReminder'),st=document.getElementById('autosaveStatus'),tm=document.getElementById('autosaveTime');if(!ta)return;try{var s=localStorage.getItem('gafd_reminder');if(s){ta.value=s;if(st)st.textContent='Saved';if(tm)tm.textContent=localStorage.getItem('gafd_reminder_time')||'';}}catch(e){}var t;ta.addEventListener('input',function(){if(st)st.textContent='Saving...';clearTimeout(t);t=setTimeout(function(){try{var now=new Date().toLocaleTimeString('en-HK',{hour:'2-digit',minute:'2-digit'});window.reminderMemory=ta.value; localStorage.setItem('gafd_reminder',ta.value); if(window.firebaseRealtime&&window.firebaseRealtime.scheduleSave)window.firebaseRealtime.scheduleSave();localStorage.setItem('gafd_reminder_time',now);if(st)st.textContent='Saved';if(tm)tm.textContent=now;}catch(e){ifetch('https://gemnurse2026-default-rtdb.asia-southeast1.firebasedatabase.app/gafd/reminder.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:ta.value,time:now})}).then(function(r){if(st)st.textContent=r.ok?'Saved to cloud':'Saved locally';}).catch(function(){if(st)st.textContent='Saved locally';});},600);});});
-</script>
+</body>
+</html>
