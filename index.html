@@ -134,14 +134,6 @@
     .reminder-panel{margin-top:var(--sp5)}
     .reminder-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp3);gap:var(--sp3);flex-wrap:wrap}
     .reminder-list{display:grid;gap:var(--sp2)}
-    .disease-table input[type=number]{width:60px;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rad-sm);padding:.4rem .5rem;text-align:center;font-size:var(--text-sm)}
-    .disease-table input[type=number]:focus{outline:2px solid var(--pri);outline-offset:2px;border-color:var(--pri)}
-    .month-total{font-weight:800;color:var(--pri)}
-    .disease-table th:first-child,.disease-table td:first-child{position:sticky;left:0;z-index:2;background:var(--surf);box-shadow:1px 0 0 var(--bdr)}
-    .disease-table thead th:first-child{z-index:4;background:var(--surf2)}
-    .disease-table tfoot td:first-child{z-index:3;background:var(--surf2)}
-    .bar{height:8px;border-radius:var(--rad-f);background:var(--div);overflow:hidden;margin-top:4px}
-    .bar-fill{height:100%;border-radius:var(--rad-f);background:var(--pri);transition:width .5s ease}
     .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:none;place-items:center}
     .modal-bg.open{display:grid}
     .modal{background:var(--surf);border-radius:var(--rad-xl);padding:var(--sp6);width:min(520px,94vw);box-shadow:var(--sh-md);display:grid;gap:var(--sp4)}
@@ -239,7 +231,7 @@
     <header class="topbar">
       <div class="page-title">
         <h2 id="pageTitle">Dashboard &amp; Reminder</h2>
-        <div class="sub" id="pageSub">Calendar · nurse holiday · reminders · monthly data</div>
+        <div class="sub" id="pageSub">Calendar · nurse holiday · reminders</div>
       </div>
       <div class="toolbar">
         <button class="btn btn-sec menu-btn" id="menuBtn">☰ Menu</button>
@@ -303,24 +295,6 @@
               <div class="kpi"><div class="k-label">Autosave status</div><div class="k-val" id="autosaveStatus" style="font-size:var(--text-lg)">Ready</div></div>
               <div class="kpi"><div class="k-label">Last update</div><div class="k-val" id="autosaveTime" style="font-size:var(--text-lg)">--:--</div></div>
             </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="cal-header">
-            <div class="card-title" style="margin:0">Monthly geriatric disease data collection</div>
-            <div style="display:flex;gap:var(--sp2);align-items:center;flex-wrap:wrap">
-              <select class="sel" id="diseaseMonth" style="width:auto;padding:.5rem .8rem"></select>
-              <button class="btn btn-pri" id="exportCsvBtn">Export CSV</button>
-            </div>
-          </div>
-          <p class="tiny muted" style="margin-bottom:var(--sp4)">Enter daily case count for each condition. Totals update automatically.</p>
-          <div class="tw disease-table">
-            <table id="diseaseTable">
-              <thead id="diseaseHead"></thead>
-              <tbody id="diseaseBody"></tbody>
-              <tfoot id="diseaseFoot"></tfoot>
-            </table>
           </div>
         </div>
       </div>
@@ -710,7 +684,7 @@ const HK_HOLIDAYS = {
 };
 
 const pageMeta = {
-  dashboard:{title:'Dashboard & Reminder', sub:'Calendar · nurse holiday · reminders · monthly data'},
+  dashboard:{title:'Dashboard & Reminder', sub:'Calendar · nurse holiday · reminders'},
   drugs:{title:'Common Drug List', sub:'Editable categories with image upload'},
   protocols:{title:'Referral Protocols', sub:'Fast track · clinic · community referral pathways'},
   gait:{title:'Gait & Movement', sub:'Objective wording for gait, posture, transfer and balance'},
@@ -882,10 +856,6 @@ window.calendarEntries = {};
 const today = new Date();
 let calYear = today.getFullYear();
 let calMonth = today.getMonth();
-window.diseaseData = {};
-const DISEASES = ['Falls / Injury','Delirium','Dementia','Heart Failure','Pneumonia','UTI / Sepsis','Stroke / TIA','Frailty','Osteoporosis / #NOF','Polypharmacy'];
-const MONTHS_LIST = [];
-for(let y=2026;y<=2027;y++){ for(let m=0;m<12;m++){ MONTHS_LIST.push({year:y,month:m,label:new Date(y,m,1).toLocaleString('en-HK',{month:'long',year:'numeric'})}); }}
 let dark = window.matchMedia('(prefers-color-scheme:dark)').matches;
 window.reminderMemory = '';
 window.activeDrugCategory = 'cardiovascular';
@@ -1026,54 +996,6 @@ function renderReminders(){
   });
 }
 
-const diseaseSel = document.getElementById('diseaseMonth');
-MONTHS_LIST.forEach((m,i)=>{ const opt=document.createElement('option'); opt.value=i; opt.textContent=m.label; if(m.year===today.getFullYear()&&m.month===today.getMonth()) opt.selected=true; diseaseSel.appendChild(opt); });
-function getDaysInMonth(y,m){ return new Date(y,m+1,0).getDate(); }
-window.renderDiseaseTable = function renderDiseaseTable(){
-  const idx = parseInt(diseaseSel.value,10);
-  const {year,month} = MONTHS_LIST[idx];
-  const days = getDaysInMonth(year,month);
-  const mk = `${year}-${pad(month+1)}`;
-  if(!diseaseData[mk]){ diseaseData[mk]={}; DISEASES.forEach(d=>diseaseData[mk][d]=Array(days).fill(0)); }
-  const data = diseaseData[mk];
-  let headHtml = '<tr><th style="min-width:150px">Condition</th>';
-  for(let d=1; d<=days; d++) headHtml += `<th>${d}</th>`;
-  headHtml += '<th>Total</th></tr>';
-  document.getElementById('diseaseHead').innerHTML = headHtml;
-  let bodyHtml = '';
-  DISEASES.forEach((dis,di)=>{
-    const row = data[dis] || Array(days).fill(0);
-    const total = row.reduce((a,b)=>a+b,0);
-    bodyHtml += `<tr><td style="font-weight:700;white-space:nowrap">${dis}</td>`;
-    for(let d=0; d<days; d++) bodyHtml += `<td><input type="number" min="0" max="99" value="${row[d]}" data-dis="${di}" data-day="${d}"></td>`;
-    bodyHtml += `<td class="month-total" id="tot-${di}">${total}</td></tr>`;
-  });
-  document.getElementById('diseaseBody').innerHTML = bodyHtml;
-  let footHtml = '<tr><td style="font-weight:800">Day total</td>';
-  for(let d=0; d<days; d++){
-    const dayTotal = DISEASES.reduce((s,dis)=>(s+(data[dis][d]||0)),0);
-    footHtml += `<td class="month-total" id="daytot-${d}">${dayTotal}</td>`;
-  }
-  const grandTotal = DISEASES.reduce((s,dis)=>s+data[dis].reduce((a,b)=>a+b,0),0);
-  footHtml += `<td class="month-total" id="grandtot">${grandTotal}</td></tr>`;
-  document.getElementById('diseaseFoot').innerHTML = footHtml;
-  document.querySelectorAll('.disease-table input[type=number]').forEach(inp=>inp.addEventListener('change',()=>{
-    const di = parseInt(inp.dataset.dis,10); const day = parseInt(inp.dataset.day,10); const val = Math.max(0,parseInt(inp.value,10)||0); inp.value = val;
-    data[DISEASES[di]][day] = val; if(window.firebaseRealtime) window.firebaseRealtime.scheduleSave();
-    document.getElementById(`tot-${di}`).textContent = data[DISEASES[di]].reduce((a,b)=>a+b,0);
-    document.getElementById(`daytot-${day}`).textContent = DISEASES.reduce((s,dis)=>s+(data[dis][day]||0),0);
-    document.getElementById('grandtot').textContent = DISEASES.reduce((s,dis)=>s+data[dis].reduce((a,b)=>a+b,0),0);
-  }));
-}
-diseaseSel.addEventListener('change',renderDiseaseTable);
-document.getElementById('exportCsvBtn').addEventListener('click',()=>{
-  const idx=parseInt(diseaseSel.value,10); const {year,month}=MONTHS_LIST[idx]; const mk=`${year}-${pad(month+1)}`; const data=diseaseData[mk]; if(!data){ return; }
-  const days=getDaysInMonth(year,month);
-  let csv='Condition'; for(let d=1; d<=days; d++) csv += `,${d}`; csv += ',Total\n';
-  DISEASES.forEach(dis=>{ const row=data[dis]||Array(days).fill(0); csv += `"${dis}"` + row.map(v=>','+v).join('') + ',' + row.reduce((a,b)=>a+b,0) + '\n'; });
-  const blob = new Blob([csv],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`geriatric_disease_data_${mk}.csv`; a.click();
-});
-
 window.renderDrugButtons = function renderDrugButtons(){
   const bar = document.getElementById('drugTypeBar');
   if(!bar) return;
@@ -1192,7 +1114,6 @@ document.getElementById('qrUploader').addEventListener('change',e=>{
 });
 
 renderCalendar();
-renderDiseaseTable();
 renderDrugButtons();
 renderDrugTable();
 renderMobilityButtons();
@@ -1308,139 +1229,92 @@ syncFab('dashboard');
 })();
 </script>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getDatabase, ref, set, onValue, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+<!-- 本地離線緩存與單機儲存模組（LocalStorage） -->
+<script>
+(function(){
+  let suppressRemoteSave = false; 
+  let saveTimer = null;
 
-// 連接你的專屬 Firebase 數據庫網址
-const firebaseConfig = {
-  databaseURL: "https://gemnurse2026-default-rtdb.asia-southeast1.firebasedatabase.app"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const STATE_PATH = 'gafd/state'; // 統一儲存路徑
-
-let suppressRemoteSave = true; 
-let saveTimer = null;
-
-// 收集頁面內所有最新的表格與編輯器數據
-function collectState(){
-  return {
-    calendarEntries: window.calendarEntries || {},
-    reminderMemory: window.reminderMemory || '',
-    diseaseData: window.diseaseData || {},
-    drugCategories: window.DRUG_CATEGORIES || {},
-    activeDrugCategory: window.activeDrugCategory || 'cardiovascular',
-    qrItems: [...(document.getElementById('qrGallery')?document.getElementById('qrGallery').querySelectorAll('.qr-item'):[] )].map(c=>({
-      img:(c.querySelector('img')||{src:''}).src,
-      title:(c.querySelector('input')||{value:''}).value,
-      desc:(c.querySelector('textarea')||{value:''}).value
-    }))
-  };
-}
-
-// 將接收到的最新數據渲染到所有裝置畫面上
-function applyState(state){
-  if(!state) return;
-  suppressRemoteSave = true; // 鎖定防循環
-
-  if(state.calendarEntries) window.calendarEntries = state.calendarEntries;
-  if(typeof state.reminderMemory === 'string'){
-    window.reminderMemory = state.reminderMemory;
-    const el = document.getElementById('autosaveReminder');
-    if(el) el.value = state.reminderMemory;
+  function collectState(){
+    return {
+      calendarEntries: window.calendarEntries || {},
+      reminderMemory: window.reminderMemory || '',
+      drugCategories: window.DRUG_CATEGORIES || {},
+      activeDrugCategory: window.activeDrugCategory || 'cardiovascular',
+      qrItems: [...(document.getElementById('qrGallery')?document.getElementById('qrGallery').querySelectorAll('.qr-item'):[] )].map(c=>({
+        img:(c.querySelector('img')||{src:''}).src,
+        title:(c.querySelector('input')||{value:''}).value,
+        desc:(c.querySelector('textarea')||{value:''}).value
+      }))
+    };
   }
-  if(state.diseaseData) window.diseaseData = state.diseaseData;
-  if(state.drugCategories) window.DRUG_CATEGORIES = state.drugCategories;
-  if(state.activeDrugCategory) window.activeDrugCategory = state.activeDrugCategory;
-  
-  // 觸發重新渲染
-  if(typeof window.renderCalendar === 'function') window.renderCalendar();
-  if(typeof window.renderDiseaseTable === 'function') window.renderDiseaseTable();
-  if(typeof window.renderDrugButtons === 'function') window.renderDrugButtons();
-  if(typeof window.renderDrugTable === 'function') window.renderDrugTable();
-  
-  if(state.qrItems && Array.isArray(state.qrItems)){
-    const g = document.getElementById('qrGallery');
-    if(g){
-      g.innerHTML = '';
-      state.qrItems.forEach(q => { if(typeof createQrCard==='function') createQrCard(q.img,q.title,q.desc); });
+
+  function applyState(state){
+    if(!state) return;
+    suppressRemoteSave = true;
+
+    if(state.calendarEntries) window.calendarEntries = state.calendarEntries;
+    if(typeof state.reminderMemory === 'string'){
+      window.reminderMemory = state.reminderMemory;
+      const el = document.getElementById('autosaveReminder');
+      if(el) el.value = state.reminderMemory;
+    }
+    if(state.drugCategories) window.DRUG_CATEGORIES = state.drugCategories;
+    if(state.activeDrugCategory) window.activeDrugCategory = state.activeDrugCategory;
+    
+    if(typeof window.renderCalendar === 'function') window.renderCalendar();
+    if(typeof window.renderDrugButtons === 'function') window.renderDrugButtons();
+    if(typeof window.renderDrugTable === 'function') window.renderDrugTable();
+    
+    if(state.qrItems && Array.isArray(state.qrItems)){
+      const g = document.getElementById('qrGallery');
+      if(g){
+        g.innerHTML = '';
+        state.qrItems.forEach(q => { if(typeof createQrCard==='function') createQrCard(q.img,q.title,q.desc); });
+      }
+    }
+    setTimeout(()=>{ suppressRemoteSave = false; }, 200);
+  }
+
+  function saveNow(){
+    if(suppressRemoteSave) return;
+    const state = collectState();
+    try {
+      localStorage.setItem('gafdState_local', JSON.stringify(state));
+      const status = document.getElementById('autosaveStatus');
+      const time = document.getElementById('autosaveTime');
+      if(status) status.textContent = 'Saved locally';
+      if(time) time.textContent = new Date().toLocaleTimeString('en-HK',{hour:'2-digit',minute:'2-digit'});
+    } catch(e) {
+      console.error('LocalStorage save failed', e);
     }
   }
-  setTimeout(()=>{ suppressRemoteSave = false; }, 500); // 渲染完成解鎖
-}
 
-// 上傳最新修改到雲端
-async function saveNow(){
-  if(suppressRemoteSave) return;
-  const state = collectState();
-  
-  try{ localStorage.setItem('gafdState', JSON.stringify(state)); }catch(e){}
-  
-  const status = document.getElementById('autosaveStatus');
-  const time = document.getElementById('autosaveTime');
-  
-  try{
-    await set(ref(db, STATE_PATH), state);
-    if(status) status.textContent = 'Saved to cloud';
-    if(time) time.textContent = new Date().toLocaleTimeString('en-HK',{hour:'2-digit',minute:'2-digit'});
-  } catch(err){
-    console.error('Firebase SDK save failed', err);
-    if(status) status.textContent = 'Saved locally';
-  }
-}
-
-function scheduleSave(){
-  if(suppressRemoteSave) return;
-  clearTimeout(saveTimer);
-  const status = document.getElementById('autosaveStatus');
-  if(status) status.textContent = 'Saving...';
-  saveTimer = setTimeout(saveNow, 800);
-}
-
-// 供主代碼內普通按鈕和表格調用嘅全球變數
-window.firebaseRealtime = { saveNow, scheduleSave };
-
-// 加載初始化
-document.addEventListener('DOMContentLoaded', async () => {
-  // 1. 優先加載本地暫存
-  try { 
-    const ls = localStorage.getItem('gafdState'); 
-    if(ls) applyState(JSON.parse(ls)); 
-  } catch(e){}
-  
-  // 2. 向 Firebase 進行單次強制讀取
-  try {
-    const snapshot = await get(ref(db, STATE_PATH));
-    if(snapshot.exists()) {
-      applyState(snapshot.val());
-    } else {
-      suppressRemoteSave = false;
-    }
-  } catch(err) {
-    console.warn('First load failed, enable save fallback:', err);
-    suppressRemoteSave = false;
+  function scheduleSave(){
+    if(suppressRemoteSave) return;
+    clearTimeout(saveTimer);
+    const status = document.getElementById('autosaveStatus');
+    if(status) status.textContent = 'Saving...';
+    saveTimer = setTimeout(saveNow, 500);
   }
 
-  // 3. 核心：開啟實時雙向監聽（Live Streaming）
-  // 其他手機或電腦一改嘢，雲端會主動將數據推送到你目前開緊嘅所有瀏覽器上，達到實時同步
-  onValue(ref(db, STATE_PATH), (snapshot) => {
-    if (!suppressRemoteSave) {
-      const state = snapshot.val();
-      if (state) applyState(state);
+  window.firebaseRealtime = { saveNow, scheduleSave };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    try { 
+      const ls = localStorage.getItem('gafdState_local'); 
+      if(ls) applyState(JSON.parse(ls)); 
+    } catch(e){}
+    
+    const ta = document.getElementById('autosaveReminder');
+    if(ta) {
+      ta.addEventListener('input', function(){
+        window.reminderMemory = ta.value;
+        scheduleSave();
+      });
     }
   });
-
-  // 4. 綁定主頁留言板打字輸入自動儲存
-  const ta = document.getElementById('autosaveReminder');
-  if(ta) {
-    ta.addEventListener('input', function(){
-      window.reminderMemory = ta.value;
-      scheduleSave();
-    });
-  }
-});
+})();
 </script>
 </body>
 </html>
