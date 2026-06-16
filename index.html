@@ -71,4 +71,1376 @@
     .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp4)}
     .kpi{background:var(--surf2);border:1px solid var(--div);border-radius:var(--rad-lg);padding:var(--sp4)}
     .kpi .k-label{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.05em;color:var(--txf)}
-    .kpi .k-val{font-size:var(--text-xl);font-weight:900;line-height:1.05;margin-
+    .kpi .k-val{font-size:var(--text-xl);font-weight:900;line-height:1.05;margin-top:var(--sp1)}
+    .chip{display:inline-flex;align-items:center;gap:6px;padding:.3rem .7rem;border-radius:var(--rad-f);font-size:var(--text-xs);font-weight:800}
+    .chip.green{background:var(--suchl);color:var(--suc)} .chip.amber{background:var(--warnhl);color:var(--warn)} .chip.red{background:var(--errhl);color:var(--err)} .chip.blue{background:var(--bluehl);color:var(--blue)} .chip.teal{background:var(--prihl);color:var(--pri)}
+    .list{display:grid;gap:var(--sp2)}
+    .li{padding:var(--sp3) var(--sp4);background:var(--surf2);border:1px solid var(--div);border-radius:var(--rad-lg);font-size:var(--text-sm)}
+    .field{display:grid;gap:var(--sp2)}
+    .input,.textarea,.sel{width:100%;background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--rad-md);padding:.8rem 1rem;font-size:var(--text-sm)}
+    .textarea{min-height:100px;resize:vertical}
+    .tw{overflow:auto;border:1px solid var(--bdr);border-radius:var(--rad-lg)}
+    th,td{padding:.8rem 1rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--div);font-size:var(--text-sm)}
+    th{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.05em;background:var(--surf2);font-weight:700;white-space:nowrap}
+    tr:last-child td{border-bottom:none} tr:hover td{background:color-mix(in srgb,var(--pri) 3%,transparent)}
+    .cc{display:grid;gap:var(--sp2);padding:var(--sp4);border-radius:var(--rad-lg);border:1px solid var(--div);background:var(--surf2)}
+    .cc strong{font-size:var(--text-sm)}
+    .qr-drop{border:2px dashed var(--bdr);border-radius:var(--rad-xl);padding:var(--sp6);background:var(--surf2);text-align:center;display:grid;gap:var(--sp3)}
+    .qr-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:var(--sp4)}
+    .qr-item{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rad-lg);padding:var(--sp4);display:grid;gap:var(--sp3)}
+    .qr-preview{aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden;border-radius:var(--rad-md);background:var(--surf2);border:1px solid var(--div)}
+    .qr-preview img{width:100%;height:100%;object-fit:contain}
+    .drug-chart-card{display:grid;gap:var(--sp3)}
+    .drug-type-bar{display:flex;gap:var(--sp2);flex-wrap:wrap}
+    .drug-type-btn{padding:.65rem .95rem;border-radius:var(--rad-f);background:var(--surf2);border:1px solid var(--bdr);font-size:var(--text-xs);font-weight:800;transition:all var(--trans)}
+    .drug-type-btn:hover,.drug-type-btn.active{background:var(--prihl);color:var(--pri);border-color:var(--pri)}
+    .section-head{display:flex;gap:var(--sp3);justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+    .section-actions{display:flex;gap:var(--sp2);flex-wrap:wrap}
+    .protocol-chip-bar{display:flex;gap:var(--sp2);flex-wrap:wrap;margin-top:var(--sp3)}
+    .protocol-chip{padding:.65rem .95rem;border-radius:var(--rad-f);background:var(--surf2);border:1px solid var(--bdr);font-size:var(--text-xs);font-weight:800;transition:all var(--trans);text-decoration:none;color:var(--tx)}
+    .protocol-chip:hover{background:var(--prihl);color:var(--pri);border-color:var(--pri)}
+    .protocol-card{scroll-margin-top:96px}
+    .drug-chart-table input,.drug-chart-table textarea{width:100%;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rad-sm);padding:.55rem .65rem;font-size:var(--text-sm)}
+    .drug-chart-table textarea{min-height:112px;resize:vertical}
+    .drug-plus-icon{width:32px;height:32px;border-radius:999px;display:grid;place-items:center;background:var(--prihl);color:var(--pri);margin:auto}
+    .drug-plus-icon svg{width:18px;height:18px}
+    .drug-thumb{width:112px;height:112px;border-radius:var(--rad-md);border:1px dashed var(--bdr);background:var(--surf);display:grid;place-items:center;overflow:hidden;cursor:pointer;position:relative;padding:8px;text-align:center}
+    .drug-thumb:hover{border-color:var(--pri);background:var(--prihl)}
+    .drug-thumb:focus-visible{outline:2px solid var(--pri);outline-offset:2px}
+    .drug-thumb.has-image{border-style:solid}
+    .drug-thumb img{width:100%;height:100%;object-fit:contain}
+    .drug-placeholder{font-size:var(--text-sm);color:var(--txm);text-align:center;padding:.5rem;line-height:1.45;display:grid;gap:.35rem;place-items:center}.drug-placeholder svg{width:20px;height:20px;opacity:.8}
+    .drug-row-remove{white-space:nowrap}
+    .disclaimer{font-size:var(--text-xs);background:var(--warnhl);border:1px solid var(--warn);border-radius:var(--rad-lg);padding:var(--sp4);color:var(--warn)}
+    .cal-header{display:flex;align-items:center;justify-content:space-between;gap:var(--sp4);margin-bottom:var(--sp4);flex-wrap:wrap}
+    .cal-month-label{font-size:var(--text-lg);font-weight:900}
+    .cal-nav{display:flex;gap:var(--sp2)}
+    .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+    .cal-dow{font-size:var(--text-xs);font-weight:700;text-align:center;padding:var(--sp2);color:var(--txf);text-transform:uppercase;letter-spacing:.05em}
+    .cal-dow.sun{color:var(--err)}
+    .cal-day{min-height:70px;padding:var(--sp2);border-radius:var(--rad-md);background:var(--surf2);border:1px solid var(--div);cursor:pointer;display:flex;flex-direction:column;gap:3px;transition:all var(--trans);position:relative}
+    .cal-day:hover{border-color:var(--pri);background:var(--prihl)}
+    .cal-day.empty{background:transparent;border-color:transparent;cursor:default}
+    .cal-day.today{border:2px solid var(--pri);background:var(--prihl)}
+    .cal-day.holiday{background:color-mix(in srgb,var(--err) 8%,var(--surf))}
+    .cal-day.sunday{background:color-mix(in srgb,var(--err) 5%,var(--surf2))}
+    .cal-day.has-note{background:color-mix(in srgb,var(--suc) 8%,var(--surf2))}
+    .day-num{font-size:var(--text-xs);font-weight:700;line-height:1}
+    .cal-day.sunday .day-num,.cal-day.holiday .day-num{color:var(--err)}
+    .cal-day.today .day-num{color:var(--pri)}
+    .holiday-label{font-size:9px;line-height:1.2;color:var(--err);font-weight:700;word-break:break-word}
+    .note-dot{width:6px;height:6px;border-radius:50%;background:var(--suc);margin-top:auto;align-self:flex-end}
+    .nurse-holiday-label{font-size:9px;line-height:1.15;color:var(--blue);font-weight:700;word-break:break-word}
+    .reminder-panel{margin-top:var(--sp5)}
+    .reminder-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp3);gap:var(--sp3);flex-wrap:wrap}
+    .reminder-list{display:grid;gap:var(--sp2)}
+    .disease-table input[type=number]{width:60px;background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rad-sm);padding:.4rem .5rem;text-align:center;font-size:var(--text-sm)}
+    .disease-table input[type=number]:focus{outline:2px solid var(--pri);outline-offset:2px;border-color:var(--pri)}
+    .month-total{font-weight:800;color:var(--pri)}
+    .disease-table th:first-child,.disease-table td:first-child{position:sticky;left:0;z-index:2;background:var(--surf);box-shadow:1px 0 0 var(--bdr)}
+    .disease-table thead th:first-child{z-index:4;background:var(--surf2)}
+    .disease-table tfoot td:first-child{z-index:3;background:var(--surf2)}
+    .bar{height:8px;border-radius:var(--rad-f);background:var(--div);overflow:hidden;margin-top:4px}
+    .bar-fill{height:100%;border-radius:var(--rad-f);background:var(--pri);transition:width .5s ease}
+    .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:none;place-items:center}
+    .modal-bg.open{display:grid}
+    .modal{background:var(--surf);border-radius:var(--rad-xl);padding:var(--sp6);width:min(520px,94vw);box-shadow:var(--sh-md);display:grid;gap:var(--sp4)}
+    .modal h3{font-size:var(--text-lg);font-weight:900}
+    .menu-btn{display:none}
+    .hide{display:none!important}
+    .mobile-tabbar{display:none}
+    .page-end-icon{display:flex;align-items:center;justify-content:center;gap:var(--sp2);margin:var(--sp5) auto var(--sp2);color:var(--mut);font-size:var(--text-xs)}
+    .page-end-icon svg{width:18px;height:18px;opacity:.8}
+    @media(max-width:1180px){
+      .app{grid-template-columns:220px 1fr}
+      .sidebar{padding:var(--sp4)}
+      .content{padding:var(--sp4)}
+      .topbar{padding:var(--sp3) var(--sp4)}
+      .card{padding:var(--sp4)}
+      .tw{overflow:auto}
+      .tw table{min-width:760px}
+    }
+    @media(max-width:820px){
+      .topbar{padding:var(--sp3)}
+      .page-title h2{font-size:var(--text-lg)}
+      .page-title .sub{display:none}
+      .toolbar{width:100%;justify-content:flex-end}
+      .content{padding:var(--sp3);padding-bottom:5.5rem}
+      .card{padding:var(--sp4)}
+      .btn{padding:.62rem .9rem}
+      .cal-day{min-height:56px}
+      .tw table{min-width:700px}
+      .mobile-tabbar{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--sp2);position:fixed;left:0;right:0;bottom:0;padding:var(--sp2) var(--sp3) calc(var(--sp2) + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--surf) 92%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--bdr);z-index:35}
+      .mobile-tabbar button{padding:.5rem .2rem;border-radius:var(--rad-lg);background:var(--surf2);border:1px solid var(--bdr);font-size:10px;font-weight:800;line-height:1.1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:56px}
+      .mobile-tabbar button svg{width:16px;height:16px;flex:0 0 auto}
+      .mobile-tabbar button span{display:block;white-space:nowrap}
+      .mobile-tabbar button.active{background:var(--prihl);color:var(--pri);border-color:var(--pri)}
+    }
+    @media(max-width:980px){
+      .app{grid-template-columns:1fr}
+      .sidebar{position:fixed;left:0;top:0;bottom:0;width:min(88vw,300px);transform:translateX(-100%);transition:transform var(--trans);z-index:30}
+      .sidebar.open{transform:translateX(0)}
+      .menu-btn{display:inline-flex}
+      .g2,.g3,.g4{grid-template-columns:1fr}
+      .content,.topbar{padding:var(--sp4)}
+      .cal-grid{gap:2px}
+      .cal-day{min-height:50px;padding:var(--sp1)}
+    }
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+    /* FAB */
+    .fab{position:fixed;right:var(--sp5);bottom:calc(var(--sp5) + env(safe-area-inset-bottom));width:56px;height:56px;border-radius:var(--rad-full);background:var(--pri);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px oklch(0.35 0.12 195 / 0.35);z-index:40;transition:background var(--trans),transform var(--trans)}
+    .fab:hover{background:var(--pri-hover);transform:scale(1.07)}
+    .fab:active{transform:scale(0.95)}
+    .fab svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(max-width:820px){.fab{right:var(--sp4);bottom:calc(5.5rem + var(--sp3) + env(safe-area-inset-bottom))}}
+    /* Add-contact modal */
+    .add-modal{display:none;position:fixed;inset:0;z-index:50;align-items:center;justify-content:center}
+    .add-modal.open{display:flex}
+    .add-modal-bg{position:absolute;inset:0;background:oklch(0 0 0 / 0.45)}
+    .add-modal-box{position:relative;background:var(--surf);border-radius:var(--rad-xl);padding:var(--sp6);width:min(480px,92vw);box-shadow:0 16px 48px oklch(0 0 0 / 0.22);display:grid;gap:var(--sp4)}
+    .add-modal-box h3{font-size:var(--text-lg);font-weight:700;margin:0}
+    .add-modal-close{position:absolute;top:var(--sp4);right:var(--sp4);background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--rad-full);width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+    .add-modal-close svg{width:16px;height:16px;stroke:var(--txt);fill:none;stroke-width:2.5;stroke-linecap:round}
+    .add-modal-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp3)}
+    .add-modal-row .field{grid-column:span 1}
+    .add-modal-row .field.full{grid-column:span 2}
+    .add-modal-actions{display:flex;gap:var(--sp3);justify-content:flex-end}
+    .added-entries{display:grid;gap:var(--sp2);margin-top:var(--sp2)}
+    .added-entry{display:flex;justify-content:space-between;align-items:center;background:var(--surf2);border:1px solid var(--bdr);border-radius:var(--rad-md);padding:var(--sp2) var(--sp3);font-size:var(--text-sm)}
+    .added-entry .del-btn{background:none;border:none;cursor:pointer;color:var(--err);padding:2px 6px;border-radius:var(--rad-sm)}
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.87 3.13-7 7-7s7 3.13 7 7"/><path d="M12 17v3M9.5 19.5l2.5-2.5 2.5 2.5"/></svg>
+      </div>
+      <div class="brand-text"><h1>Geriatric Front Door</h1><p>QMH AED — Daily screening support</p></div>
+    </div>
+    <div>
+      <div class="nav-label">Pages</div>
+      <button class="nav-btn active" data-page="dashboard"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Dashboard &amp; Reminder</button>
+      <button class="nav-btn" data-page="drugs"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Common Drug List</button>
+      <button class="nav-btn" data-page="protocols"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Referral Protocols</button>
+      <button class="nav-btn" data-page="gait"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><path d="M12 7v5l-3 3M12 12l3 4M9 19l1-3M14 20l1-4"/></svg>Gait &amp; Movement</button>
+      <button class="nav-btn" data-page="contacts"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 2 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Contacts</button>
+      <button class="nav-btn" data-page="education"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>QR Education</button>
+      <button class="nav-btn" data-page="notes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>NGO &amp; Others</button>
+    </div>
+    <div class="nav-reminders">
+      <div><strong>Use</strong>: screen, remind, refer, educate.</div>
+      <div>All edits stay in this open session only.</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="page-title">
+        <h2 id="pageTitle">Dashboard &amp; Reminder</h2>
+        <div class="sub" id="pageSub">Calendar · nurse holiday · reminders · monthly data</div>
+      </div>
+      <div class="toolbar">
+        <button class="btn btn-sec menu-btn" id="menuBtn">☰ Menu</button>
+        <button class="btn btn-sec" id="themeBtn" aria-label="Toggle theme">◐ Theme</button>
+        <button class="btn btn-pri" id="todayBtn">Today</button>
+      </div>
+    </header>
+
+    <section class="content">
+      <div class="page active" id="dashboard">
+        <div class="card">
+          <div class="cal-header">
+            <div class="cal-month-label" id="calMonthLabel">June 2026</div>
+            <div class="cal-nav">
+              <button class="btn btn-sec" id="calPrev">←</button>
+              <button class="btn btn-sec" id="calToday">Today</button>
+              <button class="btn btn-sec" id="calNext">→</button>
+            </div>
+          </div>
+          <div class="cal-grid" id="calGrid"></div>
+          <div class="reminder-panel">
+            <div class="reminder-head">
+              <div class="card-title" style="margin:0">Update details this week: <span id="reminderMonthLabel">This week</span></div>
+              <button class="btn btn-pri" id="addReminderBtn">+ Add reminder</button>
+            </div>
+            <div class="reminder-list" id="reminderList">
+              <div class="li tiny">No update details for this week. Click a calendar day to add a reminder or nurse holiday detail.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="g2">
+          <div class="card">
+            <div class="card-title">Daily work schedule</div>
+            <div class="tw"><table>
+              <thead><tr><th>Time</th><th>Work item</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Mon–Fri 0900–0930</td><td>Phone FU</td><td>Follow-up calls and review pending cases.</td></tr>
+                <tr><td>Mon–Fri 0930–1130</td><td>In AED</td><td>Elderly screening, assessment, education and referral review.</td></tr>
+                <tr><td>Mon–Fri 1130–1300</td><td>Back to ICDS office</td><td>Documentation, coordination and admin support.</td></tr>
+                <tr><td>Mon–Fri 1300–1400</td><td>Lunch</td><td>Break.</td></tr>
+                <tr><td>Mon–Fri 1400–1530</td><td>Data entry / assessment</td><td>Case documentation and follow-up processing.</td></tr>
+                <tr><td>Long week 1530–1700</td><td>Admin support</td><td>Finish documentation and referrals.</td></tr>
+                <tr><td>Short week 1530–1748</td><td>Admin support</td><td>Finish documentation and referrals.</td></tr>
+                <tr><td>Sat 0900–1300</td><td>In ICDS office</td><td>Office duty, follow-up and admin work.</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Editable reminder board</div>
+            <p class="tiny muted" style="margin-bottom:var(--sp3)">Type today’s reminders below. Content is kept in memory during this session.</p>
+            <div class="field">
+              <label class="tiny">Today reminder</label>
+              <textarea class="textarea" id="autosaveReminder" placeholder="Example:
+- Call family clinic for follow-up
+- Check NGO referral form
+- Review QR code materials
+- Complete discharge teaching"></textarea>
+            </div>
+            <div class="g2" style="margin-top:var(--sp4)">
+              <div class="kpi"><div class="k-label">Autosave status</div><div class="k-val" id="autosaveStatus" style="font-size:var(--text-lg)">Ready</div></div>
+              <div class="kpi"><div class="k-label">Last update</div><div class="k-val" id="autosaveTime" style="font-size:var(--text-lg)">--:--</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="cal-header">
+            <div class="card-title" style="margin:0">Monthly geriatric disease data collection</div>
+            <div style="display:flex;gap:var(--sp2);align-items:center;flex-wrap:wrap">
+              <select class="sel" id="diseaseMonth" style="width:auto;padding:.5rem .8rem"></select>
+              <button class="btn btn-pri" id="exportCsvBtn">Export CSV</button>
+            </div>
+          </div>
+          <p class="tiny muted" style="margin-bottom:var(--sp4)">Enter daily case count for each condition. Totals update automatically.</p>
+          <div class="tw disease-table">
+            <table id="diseaseTable">
+              <thead id="diseaseHead"></thead>
+              <tbody id="diseaseBody"></tbody>
+              <tfoot id="diseaseFoot"></tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="drugs">
+        <div class="card drug-chart-card">
+          <div class="drug-type-bar" id="drugTypeBar"></div>
+          <div class="section-head" style="margin-top:var(--sp4)">
+            <div>
+              <div class="card-title" id="activeDrugTitle" style="margin:0">Cardiovascular</div>
+              <div class="tiny" id="activeDrugSubtitle">Quick memory aid for common cardiovascular medicines.</div>
+            </div>
+            <div class="section-actions">
+              <button class="btn btn-sec" id="addDrugRowBtn" type="button">Add blank drug</button>
+              <label class="btn btn-pri" for="activeDrugUpload">Upload drug picture</label>
+              <input id="activeDrugUpload" type="file" accept="image/*" multiple hidden>
+              <input id="drugCellUpload" type="file" accept="image/*" hidden>
+            </div>
+          </div>
+          <div class="tw" style="margin-top:var(--sp4)">
+            <table class="drug-chart-table">
+              <thead>
+                <tr>
+                  <th style="min-width:180px">Drug name</th>
+                  <th style="min-width:180px">Brand / strength</th>
+                  <th style="min-width:140px">Drug picture</th>
+                  <th style="min-width:280px">Main use / teaching point</th>
+                </tr>
+              </thead>
+              <tbody id="drugChartBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="page" id="protocols">
+        <div class="card">
+          <div class="card-title">Referral protocols</div>
+          <div class="protocol-chip-bar">
+            <a class="protocol-chip" href="#proto-1">Fast Track</a>
+            <a class="protocol-chip" href="#proto-2">GDH</a>
+            <a class="protocol-chip" href="#proto-3">Advancing SOPD</a>
+            <a class="protocol-chip" href="#proto-4">QMH Clinic FU</a>
+            <a class="protocol-chip" href="#proto-5">PGT</a>
+            <a class="protocol-chip" href="#proto-6">CGAT</a>
+            <a class="protocol-chip" href="#proto-7">CVMO</a>
+            <a class="protocol-chip" href="#proto-8">ICDS / IDSP</a>
+            <a class="protocol-chip" href="#proto-9">PSCC</a>
+            <a class="protocol-chip" href="#proto-10">CNS</a>
+            <a class="protocol-chip" href="#proto-11">GOPC</a>
+            <a class="protocol-chip" href="#proto-12">Palliative</a>
+          </div>
+        </div>
+
+        <div class="card protocol-card" id="proto-1"><div class="card-title">1. Fast Track Clinic in FYKH</div><div class="list"><div class="li">Consult Geriatrician for need of Fast Track Clinic in FYKH.</div><div class="li">Contact FYKH GDH nurse for appointment, Tel: 2855 6177.</div><div class="li">Fax referral form endorsed by Geriatrician to GDH, Fax: 2855 6169.</div><div class="li">After confirmation, inform patient of appointment and transport arrangement.</div></div></div>
+        <div class="card protocol-card" id="proto-2"><div class="card-title">2. Geriatric Day Hospital (FYKH / TWH)</div><div class="list"><div class="li">Consult Geriatrician for GDH need.</div><div class="li">FYKH GDH Tel: 2855 6177; TWH GDH Tel: 2589 8178.</div><div class="li">Fax referral to FYKH GDH 2855 6169 or TWH GDH 2546 5510.</div><div class="li">Inform patient once appointment is confirmed.</div></div></div>
+        <div class="card protocol-card" id="proto-3"><div class="card-title">3. Advancing SOPD appointment</div><div class="list"><div class="li">Consult Geriatrician for advancing SOPD requirement.</div><div class="li">Fax referral plus doctor memo to QMH / GH / TWH as appropriate.</div><div class="li">For memory / fall / nutritional clinic in QMH, contact geriatric nurse directly.</div><div class="li">After booking, notify patient by phone.</div></div></div>
+        <div class="card protocol-card" id="proto-4"><div class="card-title">4. Early follow-up in QMH Geriatric Clinics</div><div class="list"><div class="li">Fax endorsed referral to QMH Medicine S6.</div><div class="li">Aim for new Geriatric appointment within 2 weeks when appropriate.</div><div class="li">QMH Medicine S6 Fax: 2255 3018; Tel: 2255 3375 / 2255 1242.</div></div></div>
+        <div class="card protocol-card" id="proto-5"><div class="card-title">5. Referral to Psychogeriatric Outreach Service Team (PGT)</div><div class="list"><div class="li">For psychogeriatric intervention in RCHE, consult Geriatrician.</div><div class="li">Contact APN in outreach service team.</div><div class="li">Fax conjoint care plan to 2559 0217.</div><div class="li">Provide phone handover to receiving APN.</div></div></div>
+        <div class="card protocol-card" id="proto-6"><div class="card-title">6. Referral to CGAT</div><div class="list"><div class="li">For early discharge support in RCHE, contact FYKH CGAT office 2855 6144.</div><div class="li">Fax conjoint care plan to 2872 4132.</div><div class="li">Give brief clinical handover to APN.</div></div></div>
+        <div class="card protocol-card" id="proto-7"><div class="card-title">7. Referral to CVMO (RCHE CGAT old cases only)</div><div class="list"><div class="li">Consult Geriatrician for post-discharge follow-up interventions.</div><div class="li">Contact CGAT office and fax conjoint care plan.</div><div class="li">Coordinate with respective APN for action.</div></div></div>
+        <div class="card protocol-card" id="proto-8"><div class="card-title">8. New case / active case to ICDS / IDSP</div><div class="list"><div class="li">Identify new or active status after CGA.</div><div class="li">For new cases, fax discharge recommendation and referral documents.</div><div class="li">ICDS office Tel: 2255 6743; Fax: 2986 3192.</div><div class="li">Give handover to case manager or IDSP nurse manager.</div></div></div>
+        <div class="card protocol-card" id="proto-9"><div class="card-title">9. PSCC support / referral</div><div class="list"><div class="li">Verify HRE status in CMS.</div><div class="li">Contact PSCC hotline if further handover is needed.</div><div class="li">PSCC hotline Tel: 2996 2333.</div></div></div>
+        <div class="card protocol-card" id="proto-10"><div class="card-title">10. Referral to CNS</div><div class="list"><div class="li">Consult Geriatrician for community nursing need.</div><div class="li">For new case, send referral and conjoint care plan.</div><div class="li">HKWC CNS liaison Tel: 2589 2300; Fax: 2540 4899.</div></div></div>
+        <div class="card protocol-card" id="proto-11"><div class="card-title">11. GOPC appointment</div><div class="list"><div class="li">Use IVAS booking first.</div><div class="li">If quota full, contact GOPC nurse in charge for force-in quota.</div><div class="li">Notify patient of appointment and transport arrangement.</div></div></div>
+        <div class="card protocol-card" id="proto-12"><div class="card-title">12. Palliative home care services</div><div class="list"><div class="li">Consult Geriatrician for early discharge and follow-up action.</div><div class="li">Contact NC (Palliative) and fax care plan when needed.</div><div class="li">GH Palliative Office Fax: 2873 2767.</div></div></div>
+      </div>
+
+      <div class="page" id="gait">
+        <div class="card">
+          <div class="card-title">Common gait / posture / movement descriptions</div>
+          <p class="tiny">Static quick-reference table for documentation, handover and referral notes.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Gait</div>
+          <div class="tw" style="margin-top:var(--sp3)">
+            <table class="drug-chart-table">
+              <thead>
+                <tr>
+                  <th style="min-width:220px">Description</th>
+                  <th style="min-width:320px">Useful wording</th>
+                  <th style="min-width:240px">Clinical concern</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Slow shuffling gait</td><td>Short steps, reduced foot clearance, turns en bloc</td><td>Frailty, parkinsonism, fall risk</td></tr>
+                <tr><td>Broad-based gait</td><td>Widened stance for balance compensation</td><td>Balance impairment, cerebellar or sensory issue</td></tr>
+                <tr><td>Antalgic gait</td><td>Reduced weight bearing on painful limb</td><td>Pain, fracture, arthritis flare</td></tr>
+                <tr><td>Freezing / hesitant start</td><td>Difficulty initiating first step, hesitates at doorway</td><td>Parkinsonian feature, fear of falling</td></tr>
+                <tr><td>Reduced foot clearance</td><td>Feet barely clear floor, toe may catch ground</td><td>Trips and fall risk</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Posture</div>
+          <div class="tw" style="margin-top:var(--sp3)">
+            <table class="drug-chart-table">
+              <thead>
+                <tr>
+                  <th style="min-width:220px">Description</th>
+                  <th style="min-width:320px">Useful wording</th>
+                  <th style="min-width:240px">Clinical concern</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Stooped posture</td><td>Flexed trunk, forward head, reduced spinal extension</td><td>Parkinsonism, kyphosis, deconditioning</td></tr>
+                <tr><td>Kyphotic posture</td><td>Increased thoracic curvature with forward trunk posture</td><td>Osteoporosis, chronic pain</td></tr>
+                <tr><td>Forward head posture</td><td>Head projects anteriorly, poor upright alignment</td><td>Weak postural muscles</td></tr>
+                <tr><td>Reduced arm swing</td><td>Asymmetric or absent arm swing during walking</td><td>Parkinsonism, hemiplegia, pain</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Transfer</div>
+          <div class="tw" style="margin-top:var(--sp3)">
+            <table class="drug-chart-table">
+              <thead>
+                <tr>
+                  <th style="min-width:220px">Description</th>
+                  <th style="min-width:320px">Useful wording</th>
+                  <th style="min-width:240px">Clinical concern</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>One-person assist needed</td><td>Requires cueing and physical support to stand</td><td>Unsafe discharge without supervision</td></tr>
+                <tr><td>Pushes off with both arms</td><td>Requires upper limb support to rise from chair</td><td>Weak lower limb power</td></tr>
+                <tr><td>Slow to rise from chair</td><td>Effortful movement, uses momentum</td><td>Frailty, pain, deconditioning</td></tr>
+                <tr><td>Poor transfer sequencing</td><td>Forgets brakes, hand placement or turning sequence</td><td>Cognitive issue, delirium</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Balance</div>
+          <div class="tw" style="margin-top:var(--sp3)">
+            <table class="drug-chart-table">
+              <thead>
+                <tr>
+                  <th style="min-width:220px">Description</th>
+                  <th style="min-width:320px">Useful wording</th>
+                  <th style="min-width:240px">Clinical concern</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Unsteady on turning</td><td>Grabs nearby support during pivot</td><td>High falls risk</td></tr>
+                <tr><td>Sways during standing or walking</td><td>Visible trunk sway, poor midline stability</td><td>Balance impairment</td></tr>
+                <tr><td>Unable to stand unsupported</td><td>Needs handhold, frame or person support</td><td>Unsafe discharge</td></tr>
+                <tr><td>Stops walking when talking</td><td>Gait slows or stops when answering questions</td><td>Reduced executive function, fall risk</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Mobility</div>
+          <div class="tw" style="margin-top:var(--sp3)">
+            <table class="drug-chart-table">
+              <thead>
+                <tr>
+                  <th style="min-width:220px">Description</th>
+                  <th style="min-width:320px">Useful wording</th>
+                  <th style="min-width:240px">Clinical concern</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Incorrect frame technique</td><td>Frame too far ahead, poor sequencing, forgets aid</td><td>Needs physio assessment / education</td></tr>
+                <tr><td>Fatigues after short distance</td><td>Needs frequent rests after a few metres</td><td>Frailty, cardiopulmonary limitation</td></tr>
+                <tr><td>Unsafe on uneven ground</td><td>Manages flat floor only, unstable on curb or slope</td><td>Community mobility limitation</td></tr>
+                <tr><td>Unable to negotiate stairs safely</td><td>Needs rail and assistance, poor foot placement</td><td>Home access problem, falls risk</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="page-end-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="5" r="2"></circle>
+            <path d="M12 7v5l-3 3"></path>
+            <path d="M12 12l3 4"></path>
+            <path d="M9 19l1-3"></path>
+            <path d="M14 20l1-4"></path>
+          </svg>
+          <span>Movement</span>
+        </div>
+      </div>
+
+      <div class="page" id="contacts">
+        <div class="card">
+          <div class="card-title">Contacts directory</div>
+          <div style="display:flex;gap:var(--sp3);margin-top:var(--sp3);flex-wrap:wrap">
+            <input class="input" id="contactSearch" placeholder="Search name, service, district..." style="flex:1;min-width:220px">
+            <button class="btn btn-pri" id="addContactBtn" type="button">Add contact card</button>
+          </div>
+        </div>
+        <div class="g2" id="contactGrid"></div>
+      </div>
+
+      <div class="page" id="education">
+        <div class="card">
+          <div class="card-title">QR code health education</div>
+          <div class="qr-drop">
+            <div><strong>Add QR code pictures</strong></div>
+            <div class="tiny">Choose one or more QR code images, then type the education description you want to show.</div>
+            <div style="display:flex;gap:var(--sp2);justify-content:center;flex-wrap:wrap">
+              <label class="btn btn-pri" style="cursor:pointer" for="qrUploader">Upload QR code picture</label>
+              <button class="btn btn-sec" id="addBlankQrBtn" type="button">Add blank QR card</button>
+            </div>
+            <input id="qrUploader" type="file" accept="image/*" multiple hidden>
+          </div>
+        </div>
+        <div class="qr-gallery" id="qrGallery"></div>
+      </div>
+
+      <div class="page" id="notes">
+        <div class="card">
+          <div class="card-title">① 長者地區中心 District Elderly Community Centre</div>
+          <div class="tw"><table>
+            <thead><tr><th>中心名稱</th><th>機構</th><th>地址</th><th>電話</th></tr></thead>
+            <tbody>
+              <tr><td>南區地區康健中心主中心</td><td>香港仔坊會</td><td>黃竹坑香葉道 41 號嘉尚匯 2 樓</td><td>2205 3688</td></tr>
+              <tr><td>南區長者地區中心</td><td>香港仔坊會</td><td>香港仔大道 180B 號二樓</td><td>3550 5520</td></tr>
+              <tr><td>南區長者地區中心</td><td>香港仔坊會</td><td>香港華富邨華美樓地下 419-420 及 428-432 號</td><td>2554 4002 / 2554 4062</td></tr>
+              <tr><td>南區長者地區中心</td><td>香港仔坊會</td><td>黃竹坑深灣道 11 號南濤閣地下 5-6 號及 1 樓 2-3 號</td><td>2553 6333</td></tr>
+              <tr><td>中西區長者地區中心</td><td>聖雅各福群會</td><td>上環皇后大道中 345 號上環市政大廈 11 樓</td><td>2805 1253</td></tr>
+              <tr><td>西環長者綜合服務中心</td><td>香港聖公會福利協會</td><td>西環山道 28 號曉山閣地下 A-E 室</td><td>2818 3717</td></tr>
+              <tr><td>西環長者綜合服務中心</td><td>香港聖公會福利協會</td><td>西環山道 38-40 號佳景閣地下 4-6 室</td><td>2818 5056</td></tr>
+              <tr><td>明愛中區長者中心</td><td>香港明愛</td><td>中環堅道 2 號明愛大廈 2 樓 231 室</td><td>3589 2501</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">② 長者鄰舍中心 Neighbourhood Elderly Centre</div>
+          <div class="tw"><table>
+            <thead><tr><th>中心名稱</th><th>機構</th><th>地址</th><th>電話</th></tr></thead>
+            <tbody>
+              <tr><td>林應和長者鄰舍中心</td><td>香港仔坊會</td><td>香港鴨脷洲悅海街 1 號悅海華庭地下</td><td>2870 3970</td></tr>
+              <tr><td>方王換娣長者鄰舍中心</td><td>香港仔坊會</td><td>香港仔華貴邨華貴社區中心地下</td><td>2550 5887</td></tr>
+              <tr><td>万隸甫夫人長者鄰舍中心</td><td>中華基督教禮賢會</td><td>香港仔石排灣邨碧輝樓地下及平台</td><td>2553 8318</td></tr>
+              <tr><td>西園長者中心</td><td>義務工作發展局</td><td>西營盤第一街 82 號西園地下</td><td>2546 4212</td></tr>
+              <tr><td>松鶴老人中心</td><td>香港西區婦源福利會</td><td>上環必列者士街 60 號二樓</td><td>2546 5471</td></tr>
+              <tr><td>聖馬太長者鄰舍中心</td><td>香港聖公會福利協會</td><td>上環德輔道西 38 號 2 字樓 B 室</td><td>2548 2555</td></tr>
+              <tr><td>聖路加福群會長者鄰舍中心</td><td>香港聖公會福利協會</td><td>堅尼地城龍華街 20 號觀龍樓二座地下 B 室</td><td>2817 2981</td></tr>
+              <tr><td>雅研社鄰里康齡中心</td><td>鄰舍輔導會</td><td>堅尼地城海旁 26 號龍翔花園 1 樓</td><td>2819 8727</td></tr>
+              <tr><td>西環松柏中心</td><td>香港基督教女青年會</td><td>西環加惠民道西環邨房屋辦事處二樓</td><td>2818 9722</td></tr>
+              <tr><td>明愛香港仔長者中心</td><td>香港明愛</td><td>香港仔田灣邨田澤樓地下 6-10 號</td><td>2538 7777</td></tr>
+              <tr><td>華富長者中心</td><td>救世軍</td><td>華富邨華建樓 301-310 室</td><td>2550 9971</td></tr>
+              <tr><td>王少清老人中心</td><td>東華三院</td><td>香港仔華富邨華昌樓地下 126-129 室</td><td>2550 6933</td></tr>
+              <tr><td>利福長者鄰舍中心</td><td>基督教宣道會</td><td>鴨脷洲邨利寧樓地下 29 號</td><td>2552 1115</td></tr>
+              <tr><td>利東鄰里康齡中心</td><td>鄰舍輔導會</td><td>鴨脷洲利東邨東昇樓 309-316 室</td><td>2874 6311</td></tr>
+              <tr><td>何郭佩珍耆康中心</td><td>香港婦女基金會</td><td>中環擺花街 46 號中晶商業大廈 2 字樓</td><td>2543 3890</td></tr>
+              <tr><td>明愛中區長者中心</td><td>香港明愛</td><td>中環堅道 2 號明愛大廈 231 室</td><td>3589 2501</td></tr>
+              <tr><td>長者鄰舍中心</td><td>香港西區浸信會</td><td>香港西營盤第三街 206 號毓明閣一座地下高層</td><td>2857 2405</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">③ 南區及中西區認知障礙症核心支援服務</div>
+          <div class="tw"><table>
+            <thead><tr><th>項目名稱</th><th>負責機構</th><th>地址</th><th>電話</th></tr></thead>
+            <tbody>
+              <tr><td>中西區長者地區中心 - 智友醫社同行計劃</td><td>聖雅各福群會</td><td>上環皇后大道中 345 號上環市政大廈 11 樓</td><td>2805 1250</td></tr>
+              <tr><td>賽馬會「腦唔老」項目</td><td>聖雅各福群會 - 西區辦事處</td><td>西環德輔道西 466 號 2 樓</td><td>2816 9020<br>WhatsApp: 4664 9799</td></tr>
+              <tr><td>南區長者地區中心 - 智友醫社同行計劃</td><td>香港仔坊會</td><td>香港仔深灣道 3 號南濤閣地下 1-3 室</td><td>2553 6333</td></tr>
+              <tr><td>賽馬會黃志強長者地區中心</td><td>香港仔坊會</td><td>香港仔大道 180 號 B 2 樓</td><td>3550 5520</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">④ 綜合家居照顧服務（普通個案）</div>
+          <div class="tw"><table>
+            <thead><tr><th>地區</th><th>機構</th><th>地址</th><th>電話</th></tr></thead>
+            <tbody>
+              <tr><td rowspan="4">中西區</td><td>聖雅各福群會</td><td>皇后大道中 345 號上環市政大廈 11 樓</td><td>2805 1256</td></tr>
+              <tr><td>香港家庭福利會</td><td>皇后大道中 181-183 號新紀元廣場低座地下</td><td>2546 3332 / 2167 8987</td></tr>
+              <tr><td>香港家庭福利會</td><td>西營盤第一街 80 號 A 西園</td><td>—</td></tr>
+              <tr><td>香港聖公會</td><td>西環山道 28 號曉山閣地下 A-E 室</td><td>2818 3717</td></tr>
+              <tr><td rowspan="4">南區</td><td>香港仔街坊會</td><td>香港仔大道 180B 號二樓</td><td>3550 5513</td></tr>
+              <tr><td>香港仔街坊會</td><td>香港仔深灣道 3 號南濤閣地下 1-3 室</td><td>2553 9499</td></tr>
+              <tr><td>香港明愛</td><td>香港仔華富邨華泰樓 3 樓 312-317 室</td><td>2551 2481</td></tr>
+              <tr><td>香港明愛</td><td>香港仔田灣邨田澤樓地下 1, 2 及 5 號</td><td>2550 7620</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">⑤ 改善家居及社區照顧服務</div>
+          <div class="tw"><table>
+            <thead><tr><th>地區</th><th>機構</th><th>地址</th><th>電話</th></tr></thead>
+            <tbody>
+              <tr><td>中西區</td><td>聖雅各福群會</td><td>西環干諾道西 188 號香港商業中心 7 樓 13AB</td><td>2817 7839</td></tr>
+              <tr><td>南區</td><td>香港仔街坊會</td><td>香港仔石排灣邨停車場低層二樓 1 號</td><td>2555 3466</td></tr>
+              <tr><td rowspan="3">離島</td><td>香港家庭福利會</td><td>坪洲金坪邨金坪樓地下 N10B 室</td><td>2559 7773</td></tr>
+              <tr><td>香港家庭福利會</td><td>長洲長貴邨長慶樓</td><td>2986 8616</td></tr>
+              <tr><td>香港家庭福利會</td><td>南丫島榕樹灣大街 31 號 A 地下 B 室</td><td>2982 4411</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">⑥ 出院相關服務</div>
+          <p class="tiny" style="font-weight:700;margin:var(--sp3) 0 var(--sp2);color:var(--txt)">家務協助服務</p>
+          <div class="g3" style="margin-bottom:var(--sp4)">
+            <div class="card" style="background:var(--surf2)"><div class="li">一線通® 管家易服務<br><strong>2345 4455</strong></div></div>
+            <div class="card" style="background:var(--surf2)"><div class="li">靈實全護通<br><strong>2663 3001</strong></div></div>
+            <div class="card" style="background:var(--surf2)"><div class="li">賽馬會好手易配同盟計劃<br><strong>2952 1900</strong></div></div>
+          </div>
+          <p class="tiny" style="font-weight:700;margin-bottom:var(--sp2);color:var(--txt)">平安鐘服務</p>
+          <div class="list" style="margin-bottom:var(--sp4)">
+            <div class="li">長者安居協會 / 一線通平安鐘 · <strong>187 2800</strong></div>
+          </div>
+          <p class="tiny" style="font-weight:700;margin-bottom:var(--sp2);color:var(--txt)">交通服務</p>
+          <div class="g3" style="margin-bottom:var(--sp4)">
+            <div class="card" style="background:var(--surf2)"><div class="li">星群的士<br><strong>3700 6500</strong></div></div>
+            <div class="card" style="background:var(--surf2)"><div class="li">BIG BOSS<br><strong>6123 2882</strong></div></div>
+            <div class="card" style="background:var(--surf2)"><div class="li">鑽的<br><strong>2760 8771</strong></div></div>
+            <div class="card" style="background:var(--surf2)"><div class="li">Amigo<br><strong>5588 2929</strong></div></div>
+            <div class="card" style="background:var(--surf2)"><div class="li">大黃蜂<br><strong>5121 8888</strong></div></div>
+            <div class="card" style="background:var(--surf2)"><div class="li">JOIE 樂行<br><strong>3850 1111</strong></div></div>
+            <div class="card" style="background:var(--surf2)"><div class="li">愛心小巴<br><strong>2818 7400</strong></div></div>
+            <div class="card" style="background:var(--surf2)"><div class="li">冠忠無障礙<br><strong>2979 8777</strong></div></div>
+            <div class="card" style="background:var(--surf2)"><div class="li">易達巴士<br><strong>2348 0608</strong></div></div>
+            <div class="card" style="background:var(--surf2)"><div class="li">易達轎車<br><strong>8106 6616</strong></div></div>
+          </div>
+          <p class="tiny" style="font-weight:700;margin-bottom:var(--sp2);color:var(--txt)">復康用具租借</p>
+          <div class="g3">
+            <div class="card" style="background:var(--surf2)"><div class="li">聖雅各福群會<br><strong>2805 1255</strong></div></div>
+            <div class="card" style="background:var(--surf2)"><div class="li">香港紅十字會<br><strong>2255 1377 / 2610 0515</strong></div></div>
+            <div class="card" style="background:var(--surf2)"><div class="li">賽馬會樂齡 a+<br><strong>3153 5252</strong></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<nav class="mobile-tabbar" id="mobileTabbar" aria-label="Mobile quick navigation">
+  <button type="button" data-page="dashboard" aria-label="Dashboard">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+    <span>Dashboard</span>
+  </button>
+  <button type="button" data-page="drugs" aria-label="Drugs">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    <span>Drugs</span>
+  </button>
+  <button type="button" data-page="gait" aria-label="Gait and Posture">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v5l-3 3"/><path d="M12 12l3 4"/><path d="M9 19l1-3"/><path d="M14 20l1-4"/></svg>
+    <span>Gait</span>
+  </button>
+  <button type="button" data-page="contacts" aria-label="Contacts">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 2 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span>Contacts</span>
+  </button>
+  <button type="button" data-page="notes" aria-label="NGO">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    <span>NGO</span>
+  </button>
+</nav>
+
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h3 id="modalDate">Add calendar detail</h3>
+    <div class="field">
+      <label class="tiny">Type</label>
+      <select class="sel" id="modalType"><option value="reminder">Reminder</option><option value="nurseHoliday">Nurse holiday</option></select>
+    </div>
+    <div class="field"><label class="tiny">Details</label><textarea class="textarea" id="modalText" placeholder="e.g. Annual leave, training leave, staff meeting, NGO call-back, audit reminder..."></textarea></div>
+    <div class="field" id="priorityWrap"><label class="tiny">Priority</label>
+      <select class="sel" id="modalPriority"><option value="blue">General (blue)</option><option value="amber">Urgent (amber)</option><option value="red">Critical (red)</option></select>
+    </div>
+    <div style="display:flex;gap:var(--sp2)"><button class="btn btn-pri" id="modalSave">Save</button><button class="btn btn-sec" id="modalCancel">Cancel</button></div>
+  </div>
+</div>
+
+<script>
+const HK_HOLIDAYS = {
+  '2026-01-01':'New Year\'s Day','2026-02-17':'Lunar New Year\'s Day','2026-02-18':'2nd Day LNY','2026-02-19':'3rd Day LNY','2026-04-03':'Good Friday','2026-04-04':'Day after Good Friday','2026-04-06':'Day after Ching Ming','2026-04-07':'Day after Easter Monday','2026-05-01':'Labour Day','2026-05-25':'Day after Buddha\'s Birthday','2026-06-19':'Tuen Ng Festival','2026-07-01':'SAR Establishment Day','2026-09-26':'Day after Mid-Autumn Festival','2026-10-01':'National Day','2026-10-19':'Day after Chung Yeung','2026-12-25':'Christmas Day','2026-12-26':'Boxing Day',
+  '2027-01-01':'New Year\'s Day','2027-02-06':'Lunar New Year\'s Day','2027-02-08':'3rd Day LNY','2027-02-09':'4th Day LNY','2027-03-26':'Good Friday','2027-03-27':'Day after Good Friday','2027-03-29':'Easter Monday','2027-04-05':'Ching Ming Festival','2027-05-01':'Labour Day','2027-05-13':'Buddha\'s Birthday','2027-06-09':'Tuen Ng Festival','2027-07-01':'SAR Establishment Day','2027-09-16':'Day after Mid-Autumn Festival','2027-10-01':'National Day','2027-10-08':'Chung Yeung Festival','2027-12-25':'Christmas Day','2027-12-27':'Boxing Day substitute'
+};
+
+const pageMeta = {
+  dashboard:{title:'Dashboard & Reminder', sub:'Calendar · nurse holiday · reminders · monthly data'},
+  drugs:{title:'Common Drug List', sub:'Editable categories with image upload'},
+  protocols:{title:'Referral Protocols', sub:'Fast track · clinic · community referral pathways'},
+  gait:{title:'Gait & Movement', sub:'Objective wording for gait, posture, transfer and balance'},
+  contacts:{title:'Contacts', sub:'Hospital · NGO · clinic · allied health directory'},
+  education:{title:'QR Education', sub:'Patient teaching cards with QR image upload'},
+  notes:{title:'NGO & Others', sub:'Community resources and your quick notes'}
+};
+
+window.DRUG_CATEGORIES = {
+  cardiovascular:{label:'Cardiovascular', subtitle:'Common cardiovascular medicines.', items:[
+    {drug:'Amlodipine', brand:'Norvasc (5/10mg)', use:'Calcium channel blocker for hypertension.', image:''},
+    {drug:'Atenolol', brand:'Tenormin (50mg)', use:'Beta blocker; slows heart rate and lowers blood pressure.', image:''},
+    {drug:'Bisoprolol', brand:'Concor (2.5/5mg)', use:'Beta blocker.', image:''},
+    {drug:'Metoprolol', brand:'Betaloc (50/100mg)', use:'Beta blocker.', image:''},
+    {drug:'Lisinopril', brand:'Zestril (5/10mg)', use:'ACE inhibitor for blood pressure and heart failure.', image:''},
+    {drug:'Perindopril', brand:'Acertil (4mg)', use:'ACE inhibitor.', image:''},
+    {drug:'Frusemide', brand:'Lasix (40mg)', use:'Diuretic for edema and heart failure.', image:''},
+    {drug:'Losartan', brand:'Cozaar (50/100mg)', use:'Angiotensin receptor blocker (ARB).', image:''},
+    {drug:'Hydralazine', brand:'Apresoline (25mg)', use:'Vasodilator acting on vascular smooth muscle.', image:''},
+    {drug:'Digoxin', brand:'Lanoxin (62.5mg)', use:'Used for heart failure and arrhythmia.', image:''},
+    {drug:'Aspirin', brand:'Aspirin (80/100mg)', use:'Antiplatelet for cardiovascular prevention.', image:''}
+  ]},
+  diabetes:{label:'Diabetes', subtitle:'Common diabetic medicines.', items:[
+    {drug:'Metformin', brand:'Glucophage (250/500/1000mg)', use:'First-line diabetes medicine; improves insulin sensitivity.', image:''},
+    {drug:'Gliclazide', brand:'Diamicron (80mg) / Diamicron MR (30mg)', use:'Stimulates insulin release.', image:''},
+    {drug:'Sitagliptin', brand:'Januvia (25/50/100mg)', use:'DPP-4 inhibitor; increases incretin effect.', image:''},
+    {drug:'Pioglitazone', brand:'Actos (15/30mg)', use:'Reduces insulin resistance.', image:''},
+    {drug:'Dapagliflozin', brand:'Forxiga (10mg)', use:'Helps excess glucose leave the body in urine.', image:''}
+  ]},
+  pain:{label:'Pain & Gout', subtitle:'Pain control and gout medicines.', items:[
+    {drug:'Paracetamol', brand:'Panadol (500mg)', use:'Relieves pain and fever.', image:''},
+    {drug:'Celecoxib', brand:'Celebrex (100mg)', use:'Non-steroidal anti-inflammatory pain reliever (NSAID).', image:''},
+    {drug:'Etoricoxib', brand:'Arcoxia (60/90/120mg)', use:'Non-steroidal anti-inflammatory pain reliever (NSAID).', image:''},
+    {drug:'Diclofenac', brand:'Voltaren (25mg)', use:'Non-steroidal anti-inflammatory pain reliever (NSAID).', image:''},
+    {drug:'Tramadol', brand:'Tramal (50mg)', use:'Opioid pain reliever.', image:''},
+    {drug:'Ibuprofen', brand:'Ibuprofen (200mg)', use:'Non-steroidal anti-inflammatory pain reliever (NSAID).', image:''},
+    {drug:'Neurontin', brand:'Gabapentin (100/300mg)', use:'For chronic neuropathic pain; may cause blurred vision or unsteady gait.', image:''},
+    {drug:'Pregabalin', brand:'Lyrica (75/150/300mg)', use:'For chronic neuropathic pain; may cause blurred vision or unsteady gait.', image:''},
+    {drug:'Colchicine', brand:'Colchicine (0.5mg)', use:'Treats acute gout attacks.', image:''},
+    {drug:'Allopurinol', brand:'Zyloric (100mg)', use:'Prevents gout by lowering uric acid.', image:''}
+  ]},
+  allergy:{label:'Antihistamines / Allergy', subtitle:'Common antihistamines.', items:[
+    {drug:'Chlorpheniramine', brand:'Piriton (4mg)', use:'First-generation antihistamine; may cause drowsiness and fatigue.', image:''},
+    {drug:'Hydroxyzine HCl', brand:'Atarax (10/25mg)', use:'First-generation antihistamine; may cause drowsiness and fatigue.', image:''},
+    {drug:'Loratadine', brand:'Clarityne (10mg)', use:'Second-generation antihistamine; less likely to cause drowsiness.', image:''},
+    {drug:'Cetirizine', brand:'Zyrtec (10mg)', use:'Second-generation antihistamine; less likely to cause drowsiness.', image:''},
+    {drug:'Fexofenadine', brand:'Telfast (120/180mg)', use:'Second-generation antihistamine; non-drowsy.', image:''}
+  ]},
+  gi:{label:'Antacid / Laxatives', subtitle:'Common antacid and laxative medicines.', items:[
+    {drug:'Pantoprazole', brand:'Pantoloc (20/40mg)', use:'Proton pump inhibitor (PPI) that reduces stomach acid.', image:''},
+    {drug:'Famotidine', brand:'Pepcidine (20/40mg)', use:'H2 receptor blocker that reduces stomach acid.', image:''},
+    {drug:'Senna', brand:'Senokot (7.5mg)', use:'Natural stimulant laxative.', image:''},
+    {drug:'Lactulose', brand:'Lactulose（乳果糖）', use:'Synthetic osmotic laxative.', image:''},
+    {drug:'Bisacodyl', brand:'Dulcolax (Suppository)', use:'Contact stimulant laxative.', image:''},
+    {drug:'', brand:'Dulcolax (oral)', use:'Contact stimulant laxative.', image:''}
+  ]},
+  urology:{label:'Urology', subtitle:'Common urology medicines.', items:[
+    {drug:'Doxazosin', brand:'Cardura XL (4/8mg)', use:'Alpha-1 blocker for benign prostatic hyperplasia; improves urinary flow.', image:''},
+    {drug:'Prazoxin', brand:'Minipress (1/2mg)', use:'Alpha-1 blocker that relaxes smooth muscle and helps urinary symptoms in benign prostatic hyperplasia.', image:''},
+    {drug:'Tamsulosin', brand:'Harnal OCAS (0.4mg)', use:'Alpha-1 blocker for urinary symptoms caused by enlarged prostate.', image:''},
+    {drug:'Finasteride', brand:'Proscar (5mg)', use:'Blocks conversion of testosterone to DHT, helping shrink an enlarged prostate.', image:''},
+    {drug:'Oxybutynin', brand:'Apo-Oxybutynin (5mg)', use:'Treats overactive bladder and urinary incontinence.', image:''}
+  ]},
+  psych:{label:'Psychiatry / Dementia', subtitle:'Psychiatry and dementia medicines.', items:[
+    {drug:'Donepezil', brand:'Aricept (5/10mg)', use:'Dementia medicine; may cause headache, dizziness, or fatigue.', image:''},
+    {drug:'Quetiapine', brand:'Seroquel (100mg)', use:'Treats schizophrenia, bipolar disorder, and major depression.', image:''},
+    {drug:'Haloperidol', brand:'Haldol (1mg)', use:'Helps balance dopamine activity to improve abnormal mood and behaviour.', image:''},
+    {drug:'Sertraline', brand:'Zoloft (25/50/100mg)', use:'Selective serotonin reuptake inhibitor (SSRI) antidepressant.', image:''},
+    {drug:'Zopiclone', brand:'Imovane (7.5mg)', use:'Sleeping tablet.', image:''},
+    {drug:'Trazodone', brand:'Trittico (50/100mg)', use:'Serotonin antagonist and reuptake inhibitor (SARI) antidepressant for major depression.', image:''},
+    {drug:'Alprazolam', brand:'Xanax (0.5mg)', use:'Sleeping tablet.／鎮靜劑（腳軟／精神恍惚）', image:''},
+    {drug:'Diazepam', brand:'Valium (5/10mg)', use:'Sleeping tablet.／鎮靜劑（腳軟／精神恍惚）', image:''},
+    {drug:'Lorazepam', brand:'Ativan (0.5/1mg)', use:'Sleeping tablet.／鎮靜劑（腳軟／精神恍惚）', image:''},
+    {drug:'Amitriptyline', brand:'Amitriptyline (10mg)', use:'Antidepressant; may cause blurred vision and severe postural hypotension.', image:''},
+    {drug:'Fluoxetine', brand:'Prozac (20mg)', use:'Selective serotonin reuptake inhibitor (SSRI) antidepressant.（重心不穩）', image:''},
+    {drug:'Neurontin', brand:'Dilantin (100mg)', use:'Treats epilepsy.', image:''}
+  ]},
+  parkinsons:{label:"Parkinson's Disease", subtitle:"Common Parkinson's disease medicines.", items:[
+    {drug:'Levodopa + Carbidopa', brand:'Sinemet (25/100 25/250)', use:'Replaces dopamine to improve tremor, rigidity, and slowness of movement.', image:''},
+    {drug:'Madopar', brand:'Madopar (250mg)', use:'Improves tremor, stiffness, and difficulty moving.', image:''},
+    {drug:'Rasagiline', brand:'Azilect® (0.5/1mg)', use:'Reduces dopamine breakdown.', image:''},
+    {drug:'Ropinirole', brand:'Requip (2mg)', use:'Stimulates dopamine receptors to improve movement.', image:''},
+    {drug:'Benzhexol', brand:'Artane (2mg)', use:'Reduces tremor from low dopamine and lessens extrapyramidal side effects from antipsychotics.', image:''},
+    {drug:'Entacapone', brand:'Comtan (200mg)', use:'Used with levodopa to prolong effect and reduce wearing-off symptoms.', image:''}
+  ]},
+  respiratory:{label:'Respiratory / Asthma / COPD', subtitle:'Common inhalers and respiratory medicines.', items:[
+    {drug:'Beclomethasone', brand:'Becloforte / Qvar', use:'Inhaled corticosteroid (ICS).', image:''},
+    {drug:'Fluticasone', brand:'Flixotide', use:'Inhaled corticosteroid (ICS).', image:''},
+    {drug:'Salbutamol', brand:'Ventolin', use:'Quick-relief bronchodilator.', image:''},
+    {drug:'Symbicort', brand:'Symbicort Turbuhaler', use:'Combination inhaler (ICS + LABA).', image:''},
+    {drug:'', brand:'Symbicort Pressurised aerosol inhaler (MDI)', use:'', image:''},
+    {drug:'Tiotropium', brand:'Spiriva Respimat', use:'Long-acting bronchodilator for airway opening.', image:''},
+    {drug:'', brand:'Spiriva HandiHaler', use:'', image:''},
+    {drug:'Seretide', brand:'Seretide Accuhaler', use:'Combination inhaler (ICS + LABA).', image:''},
+    {drug:'', brand:'Seretide Evohaler', use:'', image:''}
+  ]}
+};
+
+const MOBILITY_META = {
+  gait:{title:'Gait', subtitle:'Short objective phrases for gait observation and handover.'},
+  posture:{title:'Posture', subtitle:'Postural alignment and movement pattern observations.'},
+  transfer:{title:'Transfer', subtitle:'Sit-to-stand, rolling, repositioning and support needs.'},
+  balance:{title:'Balance', subtitle:'Standing control, turning and falls-risk observations.'},
+  mobility:{title:'Mobility', subtitle:'Walking aid use, endurance, stairs and community mobility.'}
+};
+const MOBILITY_DATA = {
+  gait:[
+    ['Slow shuffling gait','Short steps, reduced foot clearance, turns en bloc','Frailty, parkinsonism, fall risk'],
+    ['Broad-based gait','Widened stance for balance compensation','Balance impairment, cerebellar or sensory issue'],
+    ['Antalgic gait','Reduced weight bearing on painful limb','Pain, fracture, arthritis flare'],
+    ['Freezing / hesitant start','Difficulty initiating first step, hesitates at doorway','Parkinsonian feature, fear of falling'],
+    ['Reduced foot clearance','Feet barely clear floor, toe may catch ground','Trips and fall risk']
+  ],
+  posture:[
+    ['Stooped posture','Flexed trunk, forward head, reduced spinal extension','Parkinsonism, kyphosis, deconditioning'],
+    ['Kyphotic posture','Increased thoracic curvature with forward trunk posture','Osteoporosis, chronic pain'],
+    ['Forward head posture','Head projects anteriorly, poor upright alignment','Weak postural muscles'],
+    ['Reduced arm swing','Asymmetric or absent arm swing during walking','Parkinsonism, hemiplegia, pain']
+  ],
+  transfer:[
+    ['One-person assist needed','Requires cueing and physical support to stand','Unsafe discharge without supervision'],
+    ['Pushes off with both arms','Requires upper limb support to rise from chair','Weak lower limb power'],
+    ['Slow to rise from chair','Effortful movement, uses momentum','Frailty, pain, deconditioning'],
+    ['Poor transfer sequencing','Forgets brakes, hand placement or turning sequence','Cognitive issue, delirium']
+  ],
+  balance:[
+    ['Unsteady on turning','Grabs nearby support during pivot','High falls risk'],
+    ['Sways during standing or walking','Visible trunk sway, poor midline stability','Balance impairment'],
+    ['Unable to stand unsupported','Needs handhold, frame or person support','Unsafe discharge'],
+    ['Stops walking when talking','Gait slows or stops when answering questions','Reduced executive function, fall risk']
+  ],
+  mobility:[
+    ['Incorrect frame technique','Frame too far ahead, poor sequencing, forgets aid','Needs physio assessment / education'],
+    ['Fatigues after short distance','Needs frequent rests after a few metres','Frailty, cardiopulmonary limitation'],
+    ['Unsafe on uneven ground','Manages flat floor only, unstable on curb or slope','Community mobility limitation'],
+    ['Unable to negotiate stairs safely','Needs rail and assistance, poor foot placement','Discharge barrier if home has stairs']
+  ]
+};
+
+const importedContacts = [
+  {name:'QMH NS-108 ICDS Office', service:'ICDS / IDSP office', phone:'2255 6741 / 6742 / 6743', notes:'Fax: 2255 6744'},
+  {name:'Dr. Welchie KO', service:'ICDS Geriatrician', phone:'2255 6741', notes:'QMH ICDS'},
+  {name:'Dr. T C CHAN', service:'ICDS Geriatrician', phone:'2255 6741', notes:'QMH ICDS'},
+  {name:'Dr. O Y LIN', service:'ICDS Geriatrician', phone:'2255 6741', notes:'QMH ICDS'},
+  {name:'Dr. Christie W M LI', service:'ICDS Geriatrician', phone:'2255 6741', notes:'QMH ICDS'},
+  {name:'Ms. Kara WONG', service:'APN / CCS', phone:'2255 6741 / 2255 1207', notes:'Hospital mobile: ICDS APN'},
+  {name:'Mr. Jimmy LEW', service:'APN / MED', phone:'2255 1712', notes:'Hospital mobile: 7083'},
+  {name:'Ms. Christine LAI', service:'APN', phone:'2255 6739', notes:'GH Tue AM / TWH Thu AM'},
+  {name:'Ms. Roy CHOU', service:'APN GaFD', phone:'2255 1901 / 6739', notes:'Fax: 2986 3192'},
+  {name:'Ms. M P SIT', service:'APN RN', phone:'2255 6739', notes:'QMH ICDS'},
+  {name:'Ms. Kathy CHEUNG', service:'MSW', phone:'2255 6739', notes:'QMH ICDS'},
+  {name:'Ms. Valerie SO', service:'MSW', phone:'2255 6739', notes:'QMH ICDS'},
+  {name:'Ms. S C TANG', service:'PT', phone:'2255 6739', notes:'QMH ICDS'},
+  {name:'Ms. Spring WONG', service:'OT', phone:'2255 6739', notes:'QMH ICDS'},
+  {name:'Mr. Calvin TAM', service:'PT II', phone:'2255 6739', notes:'QMH ICDS'},
+  {name:'Ms. Carmel HO', service:'OT II', phone:'2255 6739', notes:'QMH ICDS'},
+  {name:'Ms. Hilda CHAN', service:'Dietitian', phone:'2255 6739', notes:'QMH ICDS'},
+  {name:'Mr. K S MO', service:'PT I', phone:'2255 4279 / 1799', notes:'Fax: 2255 4741'},
+  {name:'Ms. Brenda LAU', service:'OT I', phone:'2255 3338 / 1403', notes:'Fax: 2255 3799'},
+  {name:'Ms. Julie WONG', service:'MSW I', phone:'2255 6739', notes:'QMH ICDS'},
+  {name:'Mr. Patrick NG', service:'Physiotherapist', phone:'2255 6739', notes:'QMH ICDS'},
+  {name:'Ms. Hoi LAM', service:'IDSP', phone:'2255 6739', notes:'QMH IDSP'},
+  {name:'HKWC CNS liaison office', service:'Community Nursing', phone:'2589 2300', notes:'Fax: 2589 2455'},
+  {name:'PSCC hotline', service:'High-risk elderly support', phone:'2996 2333', notes:'For support referral'},
+  {name:'FYKH GDH', service:'Geriatric Day Hospital', phone:'2855 6177', notes:'Fax: 2855 6168'}
+];
+
+window.calendarEntries = {};
+const today = new Date();
+let calYear = today.getFullYear();
+let calMonth = today.getMonth();
+window.diseaseData = {};
+const DISEASES = ['Falls / Injury','Delirium','Dementia','Heart Failure','Pneumonia','UTI / Sepsis','Stroke / TIA','Frailty','Osteoporosis / #NOF','Polypharmacy'];
+const MONTHS_LIST = [];
+for(let y=2026;y<=2027;y++){ for(let m=0;m<12;m++){ MONTHS_LIST.push({year:y,month:m,label:new Date(y,m,1).toLocaleString('en-HK',{month:'long',year:'numeric'})}); }}
+let dark = window.matchMedia('(prefers-color-scheme:dark)').matches;
+window.reminderMemory = '';
+window.activeDrugCategory = 'cardiovascular';
+let pendingDrugThumb = null;
+let activeMobilityType = 'gait';
+
+const pad = n => String(n).padStart(2,'0');
+const dateKey = (y,m,d) => `${y}-${pad(m+1)}-${pad(d)}`;
+const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+function applyTheme(){ document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light'); }
+applyTheme();
+document.getElementById('themeBtn').addEventListener('click',()=>{ dark = !dark; applyTheme(); });
+
+function syncFab(pageKey){
+  const fab=document.getElementById('fabBtn');
+  if(!fab) return;
+  fab.style.display = (pageKey==='contacts' || pageKey==='notes') ? 'flex' : 'none';
+}
+function activatePage(pageKey){
+  document.querySelectorAll('[data-page]').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll(`.nav-btn[data-page="${pageKey}"]`).forEach(b=>b.classList.add('active'));
+  document.querySelectorAll('#mobileTabbar [data-page]').forEach(b=>b.classList.toggle('active', b.dataset.page===pageKey));
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(pageKey).classList.add('active');
+  document.getElementById('pageTitle').textContent = pageMeta[pageKey].title;
+  document.getElementById('pageSub').textContent = pageMeta[pageKey].sub;
+  document.getElementById('sidebar').classList.remove('open');
+  const addModal=document.getElementById('addModal');
+  if(addModal) addModal.classList.remove('open');
+  if(pageKey==='drugs'){ renderDrugButtons(); renderDrugTable(); }
+  if(pageKey==='gait'){ renderMobilityButtons(); renderMobilityTable(); }
+  syncFab(pageKey);
+}
+document.querySelectorAll('.nav-btn[data-page], #mobileTabbar [data-page]').forEach(btn=>btn.addEventListener('click',()=>activatePage(btn.dataset.page)));
+document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('open'));
+document.getElementById('todayBtn').addEventListener('click',()=>{ calYear=today.getFullYear(); calMonth=today.getMonth(); renderCalendar(); });
+
+window.renderCalendar = function renderCalendar(){
+  document.getElementById('calMonthLabel').textContent = `${monthNames[calMonth]} ${calYear}`;
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach((d,i)=>{
+    const el=document.createElement('div'); el.className='cal-dow'+(i===0?' sun':''); el.textContent=d; grid.appendChild(el);
+  });
+  const firstDay = new Date(calYear,calMonth,1).getDay();
+  const daysInMonth = new Date(calYear,calMonth+1,0).getDate();
+  for(let i=0;i<firstDay;i++){ const el=document.createElement('div'); el.className='cal-day empty'; grid.appendChild(el); }
+  for(let d=1; d<=daysInMonth; d++){
+    const key = dateKey(calYear,calMonth,d);
+    const isToday = calYear===today.getFullYear() && calMonth===today.getMonth() && d===today.getDate();
+    const isSun = new Date(calYear,calMonth,d).getDay()===0;
+    const isHol = key in HK_HOLIDAYS;
+    const dayEntries = window.calendarEntries[key] || [];
+    const hasNote = dayEntries.length>0;
+    const hasNurseHoliday = dayEntries.some(e=>e.type==='nurseHoliday');
+    const el=document.createElement('div');
+    el.className='cal-day'+(isToday?' today':'')+(isHol?' holiday':(isSun?' sunday':''))+(hasNote?' has-note':'');
+    el.innerHTML=`<span class="day-num">${d}</span>`;
+    if(isHol) el.innerHTML += `<span class="holiday-label">${HK_HOLIDAYS[key]}</span>`;
+    if(hasNurseHoliday) el.innerHTML += `<span class="nurse-holiday-label">Nurse leave</span>`;
+    if(hasNote) el.innerHTML += `<span class="note-dot"></span>`;
+    el.addEventListener('click',()=>openModal(key,d));
+    grid.appendChild(el);
+  }
+  renderReminders();
+}
+
+document.getElementById('calPrev').addEventListener('click',()=>{ calMonth--; if(calMonth<0){ calMonth=11; calYear--; } renderCalendar(); });
+document.getElementById('calNext').addEventListener('click',()=>{ calMonth++; if(calMonth>11){ calMonth=0; calYear++; } renderCalendar(); });
+document.getElementById('calToday').addEventListener('click',()=>{ calYear=today.getFullYear(); calMonth=today.getMonth(); renderCalendar(); });
+
+let modalKey='';
+function openModal(key,d){
+  modalKey = key;
+  document.getElementById('modalDate').textContent = `Add calendar detail — ${d} ${monthNames[calMonth]} ${calYear}`;
+  document.getElementById('modalText').value='';
+  document.getElementById('modalType').value='reminder';
+  document.getElementById('priorityWrap').style.display='grid';
+  document.getElementById('modalBg').classList.add('open');
+}
+document.getElementById('addReminderBtn').addEventListener('click',()=>openModal(dateKey(calYear,calMonth,today.getDate()), today.getDate()));
+document.getElementById('modalType').addEventListener('change',e=>{ document.getElementById('priorityWrap').style.display = e.target.value==='reminder' ? 'grid' : 'none'; });
+document.getElementById('modalCancel').addEventListener('click',()=>document.getElementById('modalBg').classList.remove('open'));
+document.getElementById('modalBg').addEventListener('click',e=>{ if(e.target.id==='modalBg') document.getElementById('modalBg').classList.remove('open'); });
+document.getElementById('modalSave').addEventListener('click',()=>{
+  const txt = document.getElementById('modalText').value.trim();
+  if(!txt) return;
+  const type = document.getElementById('modalType').value;
+  const pri = document.getElementById('modalPriority').value;
+  if(!window.calendarEntries[modalKey]) window.calendarEntries[modalKey] = [];
+  window.calendarEntries[modalKey].push({type,text:txt,priority:pri}); if(window.firebaseRealtime) window.firebaseRealtime.scheduleSave();
+  document.getElementById('modalBg').classList.remove('open');
+  renderCalendar();
+});
+function renderReminders(){
+  const label = document.getElementById('reminderMonthLabel');
+  const list = document.getElementById('reminderList');
+  const now = new Date();
+  const day = now.getDay();
+  const diffToMonday = (day+6)%7;
+  const weekStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()-diffToMonday);
+  const weekEnd = new Date(weekStart.getFullYear(), weekStart.getMonth(), weekStart.getDate()+6);
+  const fmt = d => `${d.getDate()} ${monthNames[d.getMonth()]}`;
+  label.textContent = `${fmt(weekStart)} - ${fmt(weekEnd)}`;
+  const items = [];
+  Object.keys(window.calendarEntries).forEach(k=>{
+    const d = new Date(k+'T00:00:00');
+    if(d>=weekStart && d<=weekEnd){ window.calendarEntries[k].forEach((r,i)=>items.push({date:k,r,i})); }
+  });
+  items.sort((a,b)=>a.date.localeCompare(b.date));
+  if(!items.length){ list.innerHTML='<div class="li tiny">No update details for this week. Click any date on the calendar to add a reminder or nurse holiday.</div>'; return; }
+  list.innerHTML='';
+  items.forEach(({date,r,i})=>{
+    const dt = new Date(date+'T00:00:00');
+    const row = document.createElement('div');
+    row.className='li reminder-item';
+    row.style.cssText='display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem';
+    row.innerHTML = `
+      <div style="flex:1">
+        <div><strong>${dt.getDate()} ${monthNames[dt.getMonth()]}</strong> · ${r.type==='nurseHoliday' ? 'Nurse holiday' : 'Reminder'}</div>
+        <div class="tiny reminder-text" style="margin-top:4px">${r.text}</div>
+      </div>
+      <div style="display:flex;gap:.25rem;flex-shrink:0;margin-top:2px">
+        <button class="btn btn-sec" style="padding:.25rem .6rem;font-size:.75rem" data-edit-date="${date}" data-edit-idx="${i}">Edit</button>
+        <button class="btn btn-sec" style="padding:.25rem .6rem;font-size:.75rem;color:var(--err)" data-del-date="${date}" data-del-idx="${i}">Delete</button>
+      </div>`;
+    row.querySelector('[data-del-date]').addEventListener('click',()=>{
+      window.calendarEntries[date].splice(i,1); if(window.firebaseRealtime) window.firebaseRealtime.scheduleSave();
+      if(!window.calendarEntries[date].length) delete window.calendarEntries[date];
+      renderCalendar();
+    });
+    row.querySelector('[data-edit-date]').addEventListener('click',()=>{
+      const newText = prompt('Edit reminder:', r.text);
+      if(newText !== null){ r.text = newText.trim() || r.text; renderCalendar(); if(window.firebaseRealtime) window.firebaseRealtime.scheduleSave(); }
+    });
+    list.appendChild(row);
+  });
+}
+
+const diseaseSel = document.getElementById('diseaseMonth');
+MONTHS_LIST.forEach((m,i)=>{ const opt=document.createElement('option'); opt.value=i; opt.textContent=m.label; if(m.year===today.getFullYear()&&m.month===today.getMonth()) opt.selected=true; diseaseSel.appendChild(opt); });
+function getDaysInMonth(y,m){ return new Date(y,m+1,0).getDate(); }
+window.renderDiseaseTable = function renderDiseaseTable(){
+  const idx = parseInt(diseaseSel.value,10);
+  const {year,month} = MONTHS_LIST[idx];
+  const days = getDaysInMonth(year,month);
+  const mk = `${year}-${pad(month+1)}`;
+  if(!diseaseData[mk]){ diseaseData[mk]={}; DISEASES.forEach(d=>diseaseData[mk][d]=Array(days).fill(0)); }
+  const data = diseaseData[mk];
+  let headHtml = '<tr><th style="min-width:150px">Condition</th>';
+  for(let d=1; d<=days; d++) headHtml += `<th>${d}</th>`;
+  headHtml += '<th>Total</th></tr>';
+  document.getElementById('diseaseHead').innerHTML = headHtml;
+  let bodyHtml = '';
+  DISEASES.forEach((dis,di)=>{
+    const row = data[dis] || Array(days).fill(0);
+    const total = row.reduce((a,b)=>a+b,0);
+    bodyHtml += `<tr><td style="font-weight:700;white-space:nowrap">${dis}</td>`;
+    for(let d=0; d<days; d++) bodyHtml += `<td><input type="number" min="0" max="99" value="${row[d]}" data-dis="${di}" data-day="${d}"></td>`;
+    bodyHtml += `<td class="month-total" id="tot-${di}">${total}</td></tr>`;
+  });
+  document.getElementById('diseaseBody').innerHTML = bodyHtml;
+  let footHtml = '<tr><td style="font-weight:800">Day total</td>';
+  for(let d=0; d<days; d++){
+    const dayTotal = DISEASES.reduce((s,dis)=>(s+(data[dis][d]||0)),0);
+    footHtml += `<td class="month-total" id="daytot-${d}">${dayTotal}</td>`;
+  }
+  const grandTotal = DISEASES.reduce((s,dis)=>s+data[dis].reduce((a,b)=>a+b,0),0);
+  footHtml += `<td class="month-total" id="grandtot">${grandTotal}</td></tr>`;
+  document.getElementById('diseaseFoot').innerHTML = footHtml;
+  document.querySelectorAll('.disease-table input[type=number]').forEach(inp=>inp.addEventListener('change',()=>{
+    const di = parseInt(inp.dataset.dis,10); const day = parseInt(inp.dataset.day,10); const val = Math.max(0,parseInt(inp.value,10)||0); inp.value = val;
+    data[DISEASES[di]][day] = val; if(window.firebaseRealtime) window.firebaseRealtime.scheduleSave();
+    document.getElementById(`tot-${di}`).textContent = data[DISEASES[di]].reduce((a,b)=>a+b,0);
+    document.getElementById(`daytot-${day}`).textContent = DISEASES.reduce((s,dis)=>s+(data[dis][day]||0),0);
+    document.getElementById('grandtot').textContent = DISEASES.reduce((s,dis)=>s+data[dis].reduce((a,b)=>a+b,0),0);
+  }));
+}
+diseaseSel.addEventListener('change',renderDiseaseTable);
+document.getElementById('exportCsvBtn').addEventListener('click',()=>{
+  const idx=parseInt(diseaseSel.value,10); const {year,month}=MONTHS_LIST[idx]; const mk=`${year}-${pad(month+1)}`; const data=diseaseData[mk]; if(!data){ return; }
+  const days=getDaysInMonth(year,month);
+  let csv='Condition'; for(let d=1; d<=days; d++) csv += `,${d}`; csv += ',Total\n';
+  DISEASES.forEach(dis=>{ const row=data[dis]||Array(days).fill(0); csv += `"${dis}"` + row.map(v=>','+v).join('') + ',' + row.reduce((a,b)=>a+b,0) + '\n'; });
+  const blob = new Blob([csv],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`geriatric_disease_data_${mk}.csv`; a.click();
+});
+
+window.renderDrugButtons = function renderDrugButtons(){
+  const bar = document.getElementById('drugTypeBar');
+  if(!bar) return;
+  bar.innerHTML='';
+  Object.entries(DRUG_CATEGORIES).forEach(([key,val])=>{
+    const b=document.createElement('button');
+    b.className='drug-type-btn'+(key===activeDrugCategory?' active':'');
+    b.textContent=val.label;
+    b.type='button';
+    b.addEventListener('click',()=>{ activeDrugCategory=key; renderDrugButtons(); renderDrugTable(); });
+    bar.appendChild(b);
+  });
+}
+
+function drugThumbHTML(src){
+  return src ? `<div class="drug-thumb has-image" tabindex="0"><img src="${src}" alt="Drug image"></div>` : `<div class="drug-thumb" tabindex="0"><div class="drug-placeholder"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4l10.5-10.5a1.414 1.414 0 0 0 0-2L16.5 5.5a1.414 1.414 0 0 0-2 0L4 16v4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13.5 6.5l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Edit image</span></div></div>`;
+}
+window.renderDrugTable = function renderDrugTable(){
+  const cat = DRUG_CATEGORIES[activeDrugCategory];
+  const title = document.getElementById('activeDrugTitle');
+  const subtitle = document.getElementById('activeDrugSubtitle');
+  const body = document.getElementById('drugChartBody');
+  if(!title || !subtitle || !body) return;
+  title.textContent = cat.label;
+  subtitle.textContent = cat.subtitle;
+  body.innerHTML='';
+  cat.items.forEach((row,idx)=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><input value="${row.drug||''}" data-field="drug"></td>
+      <td><input value="${row.brand||''}" data-field="brand"></td>
+      <td><div class="drug-thumb-wrap">${drugThumbHTML(row.image||'')}</div></td>
+      <td><textarea data-field="use">${row.use||''}</textarea></td>`;
+    tr.querySelectorAll('input[data-field], textarea[data-field]').forEach(el=>el.addEventListener('input',()=>{ row[el.dataset.field]=el.value; if(window.firebaseRealtime) window.firebaseRealtime.scheduleSave(); }));
+    const thumb=tr.querySelector('.drug-thumb-wrap');
+    thumb.addEventListener('click',()=>{ pendingDrugThumb=row; document.getElementById('drugCellUpload').click(); });
+    thumb.addEventListener('keydown',e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); pendingDrugThumb=row; document.getElementById('drugCellUpload').click(); }});
+    body.appendChild(tr);
+  });
+}
+const addDrugRowBtn = document.getElementById('addDrugRowBtn');
+if(addDrugRowBtn){ addDrugRowBtn.addEventListener('click',()=>{ DRUG_CATEGORIES[activeDrugCategory].items.push({drug:'',brand:'',use:'',image:''}); renderDrugTable(); if(window.firebaseRealtime) window.firebaseRealtime.scheduleSave(); }); }
+const activeDrugUpload = document.getElementById('activeDrugUpload');
+if(activeDrugUpload){ activeDrugUpload.addEventListener('change',e=>{
+  const files=[...e.target.files];
+  files.forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=()=>{ DRUG_CATEGORIES[activeDrugCategory].items.push({drug:file.name.replace(/\.[^/.]+$/,''),brand:'',use:'',image:reader.result}); renderDrugTable(); if(window.firebaseRealtime) window.firebaseRealtime.scheduleSave(); };
+    reader.readAsDataURL(file);
+  });
+  e.target.value='';
+}); }
+const drugCellUpload = document.getElementById('drugCellUpload');
+if(drugCellUpload){
+  drugCellUpload.addEventListener('change',e=>{
+    const file=e.target.files[0];
+    if(!file || !pendingDrugThumb) return;
+    const reader=new FileReader();
+    reader.onload=()=>{ pendingDrugThumb.image=reader.result; renderDrugTable(); pendingDrugThumb=null; if(window.firebaseRealtime) window.firebaseRealtime.scheduleSave(); };
+    reader.readAsDataURL(file);
+    e.target.value='';
+  });
+}
+
+function renderMobilityButtons(){
+  const bar=document.getElementById('mobilityTypeBar');
+  if(!bar) return;
+  bar.innerHTML='';
+  Object.keys(MOBILITY_META).forEach(key=>{
+    const b=document.createElement('button');
+    b.className='drug-type-btn'+(key===activeMobilityType?' active':'');
+    b.textContent=MOBILITY_META[key].title;
+    b.type='button';
+    b.addEventListener('click',()=>{ activeMobilityType=key; renderMobilityButtons(); renderMobilityTable(); });
+    bar.appendChild(b);
+  });
+}
+function renderMobilityTable(){
+  const title=document.getElementById('activeMobilityTitle');
+  const subtitle=document.getElementById('activeMobilitySubtitle');
+  const body=document.getElementById('mobilityChartBody');
+  if(!title || !subtitle || !body) return;
+  title.textContent=MOBILITY_META[activeMobilityType].title;
+  subtitle.textContent=MOBILITY_META[activeMobilityType].subtitle;
+  body.innerHTML='';
+  MOBILITY_DATA[activeMobilityType].forEach(row=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td>`;
+    body.appendChild(tr);
+  });
+}
+
+function createContactCard(name='New contact', service='Type service / unit', phone='Add phone / extension', notes='Type notes, district, fax, referral route...'){
+  const card=document.createElement('div'); card.className='cc';
+  card.innerHTML=`<div style="display:flex;justify-content:space-between;gap:var(--sp3);align-items:flex-start"><strong contenteditable="true">${name}</strong><button class="btn btn-sec remove-contact-btn" type="button">Remove</button></div><div class="tiny">Service: <span contenteditable="true">${service}</span></div><div class="tiny">Phone: <span contenteditable="true" style="font-weight:700">${phone}</span></div><div class="tiny">Notes: <span contenteditable="true">${notes}</span></div>`;
+  card.querySelector('.remove-contact-btn').addEventListener('click',()=>card.remove());
+  document.getElementById('contactGrid').appendChild(card);
+}
+importedContacts.forEach(c=>createContactCard(c.name,c.service,c.phone,c.notes));
+document.getElementById('addContactBtn').addEventListener('click',()=>createContactCard());
+document.getElementById('contactSearch').addEventListener('input',e=>{
+  const q=e.target.value.toLowerCase().trim();
+  document.querySelectorAll('#contactGrid .cc').forEach(c=>{ c.style.display = !q || c.textContent.toLowerCase().includes(q) ? 'grid' : 'none'; });
+});
+
+function createQrCard(imageSrc='', title='New QR code', desc='Type description here...'){
+  const card=document.createElement('div'); card.className='qr-item';
+  card.innerHTML=`<div class="qr-preview">${imageSrc ? `<img src="${imageSrc}" alt="QR code" loading="lazy">` : `<div class="tiny" style="text-align:center;padding:1rem">No QR image uploaded</div>`}</div><input class="input" value="${title}" aria-label="QR title"><textarea class="textarea" style="min-height:72px" placeholder="Description...">${desc}</textarea><button class="btn btn-sec remove-qr-btn" type="button">Remove card</button>`;
+  card.querySelector('.remove-qr-btn').addEventListener('click',()=>{card.remove();if(window.firebaseRealtime)window.firebaseRealtime.scheduleSave();});   card.querySelector('input').addEventListener('input',()=>{if(window.firebaseRealtime)window.firebaseRealtime.scheduleSave();});   card.querySelector('textarea').addEventListener('input',()=>{if(window.firebaseRealtime)window.firebaseRealtime.scheduleSave();});
+  document.getElementById('qrGallery').appendChild(card);
+}
+document.getElementById('addBlankQrBtn').addEventListener('click',()=>createQrCard());
+document.getElementById('qrUploader').addEventListener('change',e=>{
+  [...e.target.files].forEach(file=>{ const reader=new FileReader(); reader.onload=()=>{createQrCard(reader.result,file.name.replace(/\.[^/.]+$/,''),'Type description here...');if(window.firebaseRealtime)window.firebaseRealtime.scheduleSave();}; reader.readAsDataURL(file); });
+  e.target.value='';
+});
+
+renderCalendar();
+renderDiseaseTable();
+renderDrugButtons();
+renderDrugTable();
+renderMobilityButtons();
+renderMobilityTable();
+syncFab('dashboard');
+</script>
+
+<button class="fab" id="fabBtn" type="button" aria-label="Add new entry">
+  <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+</button>
+
+<div class="add-modal" id="addModal" role="dialog" aria-modal="true" aria-labelledby="addModalTitle">
+  <div class="add-modal-bg" id="addModalBg"></div>
+  <div class="add-modal-box">
+    <button class="add-modal-close" id="addModalClose" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 id="addModalTitle">Add New Entry</h3>
+    <div class="add-modal-row">
+      <div class="field full"><label class="tiny" for="addType">Type</label>
+        <select class="input" id="addType">
+          <option value="ngo">NGO / Community contact</option>
+          <option value="contact">Internal contact</option>
+          <option value="note">Quick note</option>
+        </select>
+      </div>
+      <div class="field full" id="addNameWrap"><label class="tiny" for="addName">Name / Organisation</label><input class="input" id="addName" placeholder="e.g. 香港仔坊會"></div>
+      <div class="field" id="addPhoneWrap"><label class="tiny" for="addPhone">Phone</label><input class="input" id="addPhone" type="tel" placeholder="e.g. 2123 4567"></div>
+      <div class="field" id="addDistWrap"><label class="tiny" for="addDist">District / Category</label><input class="input" id="addDist" placeholder="e.g. 南區"></div>
+      <div class="field full" id="addAddrWrap"><label class="tiny" for="addAddr">Address (optional)</label><input class="input" id="addAddr" placeholder=""></div>
+      <div class="field full hide" id="addNoteWrap"><label class="tiny" for="addNoteText">Note</label><textarea class="textarea" id="addNoteText" placeholder="Type note here..." rows="3"></textarea></div>
+    </div>
+    <div class="add-modal-actions">
+      <button class="btn btn-sec" id="addModalCancel" type="button">Cancel</button>
+      <button class="btn btn-pri" id="addModalSave" type="button">Add</button>
+    </div>
+    <div id="addedList" class="added-entries" style="display:none">
+      <p class="tiny" style="color:var(--txt-muted);margin-bottom:var(--sp1)">Added this session</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var fab=document.getElementById('fabBtn');
+  var modal=document.getElementById('addModal');
+  var bgOverlay=document.getElementById('addModalBg');
+  var closeBtn=document.getElementById('addModalClose');
+  var cancelBtn=document.getElementById('addModalCancel');
+  var saveBtn=document.getElementById('addModalSave');
+  var typeEl=document.getElementById('addType');
+  var addedList=document.getElementById('addedList');
+  var entries=[];
+
+  function openModal(){modal.classList.add('open');document.getElementById('addName').focus();}
+  function closeModal(){modal.classList.remove('open');}
+
+  fab.addEventListener('click',openModal);
+  bgOverlay.addEventListener('click',closeModal);
+  closeBtn.addEventListener('click',closeModal);
+  cancelBtn.addEventListener('click',closeModal);
+
+  typeEl.addEventListener('change',function(){
+    var isNote=typeEl.value==='note';
+    document.getElementById('addNoteWrap').classList.toggle('hide',!isNote);
+    document.getElementById('addNameWrap').classList.toggle('hide',isNote);
+    document.getElementById('addPhoneWrap').classList.toggle('hide',isNote);
+    document.getElementById('addDistWrap').classList.toggle('hide',isNote);
+    document.getElementById('addAddrWrap').classList.toggle('hide',isNote);
+  });
+
+  saveBtn.addEventListener('click',function(){
+    var type=typeEl.value;
+    if(type==='note'){
+      var txt=document.getElementById('addNoteText').value.trim();
+      if(!txt)return;
+      entries.push({type:'note',text:txt});
+      document.getElementById('addNoteText').value='';
+    } else {
+      var name=document.getElementById('addName').value.trim();
+      var phone=document.getElementById('addPhone').value.trim();
+      var dist=document.getElementById('addDist').value.trim();
+      var addr=document.getElementById('addAddr').value.trim();
+      if(!name&&!phone)return;
+      entries.push({type:type,name:name,phone:phone,dist:dist,addr:addr});
+      document.getElementById('addName').value='';
+      document.getElementById('addPhone').value='';
+      document.getElementById('addDist').value='';
+      document.getElementById('addAddr').value='';
+    }
+    renderEntries();
+  });
+
+  function renderEntries(){
+    if(!entries.length){addedList.style.display='none';return;}
+    addedList.style.display='';
+    var keep=addedList.querySelector('p');
+    addedList.innerHTML='';
+    if(keep)addedList.appendChild(keep);
+    entries.forEach(function(e,i){
+      var div=document.createElement('div');
+      div.className='added-entry';
+      var label=e.type==='note'?e.text:(e.name||'')+(e.phone?' · '+e.phone:'')+(e.dist?' ('+e.dist+')':'');
+      div.innerHTML='<span>'+label+'</span><button class="del-btn" data-i="'+i+'">✕</button>';
+      addedList.appendChild(div);
+    });
+    addedList.querySelectorAll('.del-btn').forEach(function(b){
+      b.addEventListener('click',function(){entries.splice(+b.dataset.i,1);renderEntries();});
+    });
+  }
+
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+})();
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getDatabase, ref, set, onValue, get } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+// 連接你的專屬 Firebase 數據庫網址
+const firebaseConfig = {
+  databaseURL: "https://gemnurse2026-default-rtdb.asia-southeast1.firebasedatabase.app"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const STATE_PATH = 'gafd/state'; // 統一儲存路徑
+
+let suppressRemoteSave = true; 
+let saveTimer = null;
+
+// 收集頁面內所有最新的表格與編輯器數據
+function collectState(){
+  return {
+    calendarEntries: window.calendarEntries || {},
+    reminderMemory: window.reminderMemory || '',
+    diseaseData: window.diseaseData || {},
+    drugCategories: window.DRUG_CATEGORIES || {},
+    activeDrugCategory: window.activeDrugCategory || 'cardiovascular',
+    qrItems: [...(document.getElementById('qrGallery')?document.getElementById('qrGallery').querySelectorAll('.qr-item'):[] )].map(c=>({
+      img:(c.querySelector('img')||{src:''}).src,
+      title:(c.querySelector('input')||{value:''}).value,
+      desc:(c.querySelector('textarea')||{value:''}).value
+    }))
+  };
+}
+
+// 將接收到的最新數據渲染到所有裝置畫面上
+function applyState(state){
+  if(!state) return;
+  suppressRemoteSave = true; // 鎖定防循環
+
+  if(state.calendarEntries) window.calendarEntries = state.calendarEntries;
+  if(typeof state.reminderMemory === 'string'){
+    window.reminderMemory = state.reminderMemory;
+    const el = document.getElementById('autosaveReminder');
+    if(el) el.value = state.reminderMemory;
+  }
+  if(state.diseaseData) window.diseaseData = state.diseaseData;
+  if(state.drugCategories) window.DRUG_CATEGORIES = state.drugCategories;
+  if(state.activeDrugCategory) window.activeDrugCategory = state.activeDrugCategory;
+  
+  // 觸發重新渲染
+  if(typeof window.renderCalendar === 'function') window.renderCalendar();
+  if(typeof window.renderDiseaseTable === 'function') window.renderDiseaseTable();
+  if(typeof window.renderDrugButtons === 'function') window.renderDrugButtons();
+  if(typeof window.renderDrugTable === 'function') window.renderDrugTable();
+  
+  if(state.qrItems && Array.isArray(state.qrItems)){
+    const g = document.getElementById('qrGallery');
+    if(g){
+      g.innerHTML = '';
+      state.qrItems.forEach(q => { if(typeof createQrCard==='function') createQrCard(q.img,q.title,q.desc); });
+    }
+  }
+  setTimeout(()=>{ suppressRemoteSave = false; }, 500); // 渲染完成解鎖
+}
+
+// 上傳最新修改到雲端
+async function saveNow(){
+  if(suppressRemoteSave) return;
+  const state = collectState();
+  
+  try{ localStorage.setItem('gafdState', JSON.stringify(state)); }catch(e){}
+  
+  const status = document.getElementById('autosaveStatus');
+  const time = document.getElementById('autosaveTime');
+  
+  try{
+    await set(ref(db, STATE_PATH), state);
+    if(status) status.textContent = 'Saved to cloud';
+    if(time) time.textContent = new Date().toLocaleTimeString('en-HK',{hour:'2-digit',minute:'2-digit'});
+  } catch(err){
+    console.error('Firebase SDK save failed', err);
+    if(status) status.textContent = 'Saved locally';
+  }
+}
+
+function scheduleSave(){
+  if(suppressRemoteSave) return;
+  clearTimeout(saveTimer);
+  const status = document.getElementById('autosaveStatus');
+  if(status) status.textContent = 'Saving...';
+  saveTimer = setTimeout(saveNow, 800);
+}
+
+// 供主代碼內普通按鈕和表格調用嘅全球變數
+window.firebaseRealtime = { saveNow, scheduleSave };
+
+// 加載初始化
+document.addEventListener('DOMContentLoaded', async () => {
+  // 1. 優先加載本地暫存
+  try { 
+    const ls = localStorage.getItem('gafdState'); 
+    if(ls) applyState(JSON.parse(ls)); 
+  } catch(e){}
+  
+  // 2. 向 Firebase 進行單次強制讀取
+  try {
+    const snapshot = await get(ref(db, STATE_PATH));
+    if(snapshot.exists()) {
+      applyState(snapshot.val());
+    } else {
+      suppressRemoteSave = false;
+    }
+  } catch(err) {
+    console.warn('First load failed, enable save fallback:', err);
+    suppressRemoteSave = false;
+  }
+
+  // 3. 核心：開啟實時雙向監聽（Live Streaming）
+  // 其他手機或電腦一改嘢，雲端會主動將數據推送到你目前開緊嘅所有瀏覽器上，達到實時同步
+  onValue(ref(db, STATE_PATH), (snapshot) => {
+    if (!suppressRemoteSave) {
+      const state = snapshot.val();
+      if (state) applyState(state);
+    }
+  });
+
+  // 4. 綁定主頁留言板打字輸入自動儲存
+  const ta = document.getElementById('autosaveReminder');
+  if(ta) {
+    ta.addEventListener('input', function(){
+      window.reminderMemory = ta.value;
+      scheduleSave();
+    });
+  }
+});
+</script>
+</body>
+</html>
