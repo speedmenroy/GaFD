@@ -86,7 +86,7 @@
     .cc{display:grid;gap:var(--sp2);padding:var(--sp4);border-radius:var(--rad-lg);border:1px solid var(--div);background:var(--surf2)}
     .cc strong{font-size:var(--text-sm)}
     .qr-drop{border:2px dashed var(--bdr);border-radius:var(--rad-xl);padding:var(--sp6);background:var(--surf2);text-align:center;display:grid;gap:var(--sp3)}
-    .qr-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--sp4)}
+    .qr-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:var(--sp4)}
     .qr-item{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rad-lg);padding:var(--sp4);display:grid;gap:var(--sp3)}
     .qr-preview{aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden;border-radius:var(--rad-md);background:var(--surf2);border:1px solid var(--div)}
     .qr-preview img{width:100%;height:100%;object-fit:contain}
@@ -207,7 +207,7 @@
   <aside class="sidebar" id="sidebar">
     <div class="brand">
       <div class="logo" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.87 3.13-7 7-7s7 3.13 7 7"/><path d="M12 17v3M9.5 19.5l2.5-2.5 2.5 2.5"/></svg>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.87 3.13-7 7-7s7 3.13 7 7"/><path d="M12 17v3M9.5 19.5l2.5-2.5 2.5 2.5"/></svg>
       </div>
       <div class="brand-text"><h1>Geriatric Front Door</h1><p>QMH AED — Daily screening support</p></div>
     </div>
@@ -705,13 +705,13 @@ window.DRUG_CATEGORIES = {
     {drug:'Losartan', brand:'Cozaar (50/100mg)', use:'Angiotensin receptor blocker (ARB).', image:''},
     {drug:'Hydralazine', brand:'Apresoline (25mg)', use:'Vasodilator acting on vascular smooth muscle.', image:''},
     {drug:'Digoxin', brand:'Lanoxin (62.5mg)', use:'Used for heart failure and arrhythmia.', image:''},
-    {drug:'Cardia Aspirin', brand:'Aspirin (100mg)', use:'Antiplatelet for cardiovascular prevention.', image:''},
+    {drug:'Cardia Aspirin', brand:'Aspirin (100mg)', use:'Antiplatelet for cardiovascular and thromboembolic prevention.', image:''},
     {drug:'Aspirin', brand:'Aspirin (80/100mg)', use:'Antiplatelet for cardiovascular prevention.', image:''}
   ]},
   diabetes:{label:'Diabetes', subtitle:'Common diabetic medicines.', items:[
     {drug:'Metformin', brand:'Glucophage (250/500/1000mg)', use:'First-line diabetes medicine; improves insulin sensitivity.', image:''},
     {drug:'Gliclazide', brand:'Diamicron (80mg) / Diamicron MR (30mg)', use:'Stimulates insulin release.', image:''},
-    {drug:'Vildagliptin', brand:'Galvus (50mg)', use:'DPP-4 inhibitor for diabetes.', image:''},
+    {drug:'Vildagliptin', brand:'Galvus (50mg)', use:'DPP-4 inhibitor; increases insulin secretion and decreases glucagon output.', image:''},
     {drug:'Sitagliptin', brand:'Januvia (25/50/100mg)', use:'DPP-4 inhibitor; increases incretin effect.', image:''},
     {drug:'Pioglitazone', brand:'Actos (15/30mg)', use:'Reduces insulin resistance.', image:''},
     {drug:'Dapagliflozin', brand:'Forxiga (10mg)', use:'Helps excess glucose leave the body in urine.', image:''}
@@ -770,7 +770,7 @@ window.DRUG_CATEGORIES = {
     {drug:'Rasagiline', brand:'Azilect® (0.5/1mg)', use:'Reduces dopamine breakdown.', image:''},
     {drug:'Ropinirole', brand:'Requip (2mg)', use:'Stimulates dopamine receptors to improve movement.', image:''},
     {drug:'Benzhexol', brand:'Artane (2mg)', use:'Reduces tremor from low dopamine and lessens extrapyramidal side effects from antipsychotics.', image:''},
-    {drug:'Entacapone', brand:'Comtan (200mg)', use:'Used with leatheropa to prolong effect and reduce wearing-off symptoms.', image:''}
+    {drug:'Entacapone', brand:'Comtan (200mg)', use:'Used with levodopa to prolong effect and reduce wearing-off symptoms.', image:''}
   ]},
   respiratory:{label:'Respiratory / Asthma / COPD', subtitle:'Common inhalers and respiratory medicines.', items:[
     {drug:'Beclomethasone', brand:'Becloforte / Qvar', use:'Inhaled corticosteroid (ICS).', image:''},
@@ -781,7 +781,7 @@ window.DRUG_CATEGORIES = {
     {drug:'Tiotropium', brand:'Spiriva Respimat', use:'Long-acting bronchodilator for airway opening.', image:''},
     {drug:'', brand:'Spiriva HandiHaler', use:'', image:''},
     {drug:'Seretide', brand:'Seretide Accuhaler', use:'Combination inhaler (ICS + LABA).', image:''},
-    {drug:'', brand:'Seretide Evohaler', use:'', image''}
+    {drug:'', brand:'Seretide Evohaler', use:'', image:''}
   ]}
 };
 
@@ -1242,7 +1242,12 @@ syncFab('dashboard');
       calendarEntries: window.calendarEntries || {},
       reminderMemory: window.reminderMemory || '',
       drugCategories: window.DRUG_CATEGORIES || {},
-      activeDrugCategory: window.activeDrugCategory || 'cardiovascular'
+      activeDrugCategory: window.activeDrugCategory || 'cardiovascular',
+      qrItems: [...(document.getElementById('qrGallery')?document.getElementById('qrGallery').querySelectorAll('.qr-item'):[] )].map(c=>({
+        img:(c.querySelector('img')||{src:''}).src,
+        title:(c.querySelector('input')||{value:''}).value,
+        desc:(c.querySelector('textarea')||{value:''}).value
+      }))
     };
   }
 
@@ -1263,6 +1268,13 @@ syncFab('dashboard');
     if(typeof window.renderDrugButtons === 'function') window.renderDrugButtons();
     if(typeof window.renderDrugTable === 'function') window.renderDrugTable();
     
+    if(state.qrItems && Array.isArray(state.qrItems)){
+      const g = document.getElementById('qrGallery');
+      if(g){
+        g.innerHTML = '';
+        state.qrItems.forEach(q => { if(typeof createQrCard==='function') createQrCard(q.img,q.title,q.desc); });
+      }
+    }
     setTimeout(()=>{ suppressRemoteSave = false; }, 200);
   }
 
