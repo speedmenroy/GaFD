@@ -1431,7 +1431,7 @@ import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebase
   window.firebaseRealtime = { saveNow, scheduleSave };
 
   document.addEventListener('DOMContentLoaded',function initState(){
-    try{ const ls = localStorage.getItem('gafdState'); if(ls) applyState(JSON.parse(ls)); }catch(e){}
+    try{ const ls = localStorage.getItem('gafdState'); if(ls){ applyState(JSON.parse(ls)); } const rem=localStorage.getItem('gafd_reminder'); if(rem){window.reminderMemory=rem; const ta=document.getElementById('autosaveReminder'); if(ta) ta.value=rem;} }catch(e){}
     loadFromCloud();
     ;
   });
